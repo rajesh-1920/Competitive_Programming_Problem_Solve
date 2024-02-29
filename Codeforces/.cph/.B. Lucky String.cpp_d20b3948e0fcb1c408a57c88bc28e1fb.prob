@@ -1,0 +1,1 @@
+{"name":"Local: B","url":"d:\\c++ programming\\Codeforces\\B. Lucky String.cpp","tests":[{"id":1700030332362,"input":"5","output":"abcda"},{"id":1700030342074,"input":"3","output":"abc"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\Codeforces\\B. Lucky String.cpp","group":"local","local":true}

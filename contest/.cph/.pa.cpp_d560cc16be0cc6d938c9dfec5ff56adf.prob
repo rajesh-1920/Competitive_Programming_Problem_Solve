@@ -1,0 +1,1 @@
+{"name":"Local: pa","url":"d:\\c++ programming\\contest\\pa.cpp","tests":[{"id":1701437909021,"input":"2\n3\n111\n2\n00","output":"IDK\nIDK\nYES\nNO\nNO"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\contest\\pa.cpp","group":"local","local":true}

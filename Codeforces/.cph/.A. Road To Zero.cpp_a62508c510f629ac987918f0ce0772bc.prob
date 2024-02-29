@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"d:\\c++ programming\\Codeforces\\A. Road To Zero.cpp","tests":[{"id":1701891286018,"input":"2\n1 3\n391 555\n0 0\n9 4\n","output":"1337\n0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\Codeforces\\A. Road To Zero.cpp","group":"local","local":true}

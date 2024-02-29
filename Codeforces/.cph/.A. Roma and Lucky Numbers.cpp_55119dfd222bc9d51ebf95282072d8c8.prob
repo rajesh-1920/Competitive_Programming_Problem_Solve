@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"d:\\c++ programming\\Codeforces\\A. Roma and Lucky Numbers.cpp","tests":[{"id":1699622532906,"input":"3 2\n447 44 77\n","output":"2"},{"id":1699622548455,"input":"3 4\n1 2 4","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\Codeforces\\A. Roma and Lucky Numbers.cpp","group":"local","local":true}

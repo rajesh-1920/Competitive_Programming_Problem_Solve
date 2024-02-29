@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"d:\\c++ programming\\Codeforces\\A. Difference Row.cpp","tests":[{"id":1699378758261,"input":"5\n100 -100 50 0 -50\n","output":"100 -50 0 50 -100 \n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\Codeforces\\A. Difference Row.cpp","group":"local","local":true}

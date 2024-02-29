@@ -1,0 +1,1 @@
+{"name":"Local: k","url":"d:\\c++ programming\\V_judge\\k.cpp","tests":[{"id":1701180737135,"input":"8\n-1 3 -2 5 3 -5 2 2","output":"9"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\V_judge\\k.cpp","group":"local","local":true}

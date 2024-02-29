@@ -1,0 +1,1 @@
+{"name":"Local: B","url":"d:\\c++ programming\\Codeforces\\B. Permutation.cpp","tests":[{"id":1700231446138,"input":"5\n5 3 3 3 1\n","output":"2"},{"id":1700231586595,"input":"3\n4 4  4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\Codeforces\\B. Permutation.cpp","group":"local","local":true}

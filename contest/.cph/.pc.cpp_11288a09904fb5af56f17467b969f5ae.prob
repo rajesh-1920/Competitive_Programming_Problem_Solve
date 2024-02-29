@@ -1,0 +1,1 @@
+{"name":"Local: pc","url":"d:\\All program\\c++ programming\\contest\\pc.cpp","tests":[{"id":1708683079436,"input":"8 1\n4 4 4 4 4 4 4 4\n6","output":"ALICE"},{"id":1708683100418,"input":"2 2\n6 4\n4 6","output":"TIED"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\All program\\c++ programming\\contest\\pc.cpp","group":"local","local":true}

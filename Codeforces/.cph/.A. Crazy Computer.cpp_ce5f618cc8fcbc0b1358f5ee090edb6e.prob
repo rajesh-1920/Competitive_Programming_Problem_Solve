@@ -1,0 +1,1 @@
+{"name":"Local: A","url":"d:\\c++ programming\\Codeforces\\A. Crazy Computer.cpp","tests":[{"id":1702141852033,"input":"6 5\n1 3 8 14 19 20\n","output":"3"},{"id":1702141874139,"input":"6 1\n1 3 5 8 9 10","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\Codeforces\\A. Crazy Computer.cpp","group":"local","local":true}
