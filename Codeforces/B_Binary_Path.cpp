@@ -6,6 +6,7 @@ using namespace std;
 typedef long long int ll;
 //----------------------------(definition section)-------------------------------------
 #define N (1LL * 1e18)
+#define sn 1000000
 #define MOD ((1LL * 1e9) + 7)
 #define fi first
 #define sc second
@@ -20,74 +21,52 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
+ll n;
+string a[2], r;
+bool isvalid(ll x, ll y)
+{
+    return (x >= 0 && y >= 0 && x < 2 && y < n);
+}
+ll dp[3][sn] = {-1};
+ll ans(ll x, ll y)
+{
+    if (!isvalid(x, y))
+        return 0;
+    if (a[x][y] != r[x + y])
+        return 0;
+    if (x == 1 && y == n - 1)
+        return 1;
+    if (dp[x][y] != -1)
+        return dp[x][y];
+    return dp[x][y] = ans(x + 1, y) + ans(x, y + 1);
+}
 void solve()
 {
-    ll n, i, j, cnt = 0, ca = 0, cb = 0, x, y, fl = 0;
+    ll i, j, cnt = 0, ca = 0, cb = 0, x, y, fl = 0;
     cin >> n;
     vector<ll> ta, tb;
-    string a, b, r;
-    cin >> a >> b;
-    ta.pb(0);
-    tb.pb(0);
-    for (i = 0; i < n; i++)
-    {
-        if (a[i] == '0')
-            ca++;
-        if (b[i] == '0')
-            cb++;
-        ta.pb(ca);
-        tb.pb(cb);
-    }
+    r.clear();
+    cin >> a[0] >> a[1];
+    r.pb(a[0][0]);
     j = 0;
-    r.pb(a[0]);
     for (i = 1; i < n; i++)
     {
-        x = ca - ta[i - 1];
-        y = cb - tb[i - 1];
-        if (y == x)
-        {
-            if (b[i] == '0')
-            {
-                j = i;
-                r.pb(b[j]);
-                break;
-            }
-        }
-        if (y > x)
-        {
-            if (b[i] == '0')
-            {
-                j = i;
-                r.pb(b[j]);
-                break;
-            }
-        }
-        if (a[i] == a[j])
-            cnt++;
-        r.pb(a[i]);
+        if (a[1][j] == '0' && a[0][i] == '1')
+            break;
+        r.pb(a[0][i]);
         j++;
     }
-    i = j - 1;
-    while (j < n)
+    for (; j < n; j++)
+        r.pb(a[1][j]);
+    for (i = 0; i <= n; i++)
     {
-        x = ca - ta[j - 1];
-        y = cb - tb[j - 1];
-        if (y == x)
-            if (a[i] == a[j])
-                cnt++;
-        r.pb(b[j]);
-        j++;
-        i++;
+        dp[0][i] = -1;
+        dp[1][i] = -1;
+        dp[2][i] = -1;
     }
+    cnt = ans(0, 0);
     cout << r;
     nl;
-    if (cnt > 1 || cnt == n - 1)
-    {
-        if (cnt * 2 <= n)
-            cnt += cnt;
-        else if (cnt == n - 1)
-            cnt++;
-    }
     cout << cnt;
     nl;
 }
