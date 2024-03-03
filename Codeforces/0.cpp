@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  02.03.2024
+// Date  :  03.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -7,6 +7,7 @@ typedef long long int ll;
 //----------------------------(definition section)-------------------------------------
 #define N (1LL * 1e18)
 #define MOD ((1LL * 1e9) + 7)
+#define sn 3000000+100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)

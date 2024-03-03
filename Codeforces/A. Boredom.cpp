@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  20.11.2023
+// Date  :  03.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -22,47 +22,68 @@ using namespace std;
 #define NO cout << "NO\n"
 #define nl cout << "\n"
 #define rrr return
+#define sn 3000000 + 100
 //------------------------------------------------------------------------------------
+map<ll, ll> mp;
+ll dp[sn];
+ll f(ll n)
+{
+    if (n <= 0)
+        return 0;
+    if (dp[n] >= 0)
+        return dp[n];
+    return dp[n] = (max(f(n - 1), (f(n - 2) + (mp[n] * n))));
+}
 void solve(void)
 {
-    ll n, i, res = 0;
+    ll n, i, res = 0, x = 0;
+    for (i = 0; i < sn; i++)
+        dp[i] = -1;
+    mp.clear();
     cin >> n;
     ll a[n];
-    map<ll, ll> mp;
     for (i = 0; i < n; i++)
     {
         cin >> a[i];
         mp[a[i]]++;
+        x = max(x, a[i]);
     }
-    sort(a, a + n);
-    for (i = n - 1; i >= 0; i--)
+    /*while (true)
     {
-        if ((mp[a[i]] * a[i]) >= (mp[a[i] - 1] * (a[i] - 1)))
+        if (a.size() == 0)
         {
-            if (mp[a[i]] > 0)
-            {
-                res += a[i];
-                mp.erase(a[i] - 1);
-            }
+            cout << res;
+            nl;
+            rrr;
         }
-        else if (((mp[a[i]] * a[i]) + (mp[a[i] - 2] * (a[i] - 2))) >= (mp[a[i] - 1] * (a[i] - 1)))
+        x = *(--a.end());
+        if (mp[x - 1] * (x - 1) > ((mp[x] * x) + (mp[x - 2] * (x - 2))) && x > 1 && mp[x - 1] > 0)
         {
-            if (mp[a[i]] > 0)
-            {
-                res += a[i];
-                mp.erase(a[i] - 1);
-            }
+            res += (mp[x - 1] * (x - 1));
+            mp.erase(x - 2);
+            mp.erase(x);
+            mp[x - 1]--;
+            if (mp[x - 1] == 0)
+                mp.erase(x - 1);
+            a.insert(x - 1);
+            a.insert(x - 2);
+            a.erase(x - 1);
+            a.erase(x - 2);
+            a.erase(x);
         }
-        else if (((mp[a[i]] * a[i]) + (mp[a[i] - 2] * (a[i] - 2))) < (mp[a[i] - 1] * (a[i] - 1)))
+        else // if (mp[x - 1] * (x - 1) > ((mp[x] * x) + (mp[x - 2] * (x - 2))))
         {
-            if (mp[a[i] - 1] > 0)
-            {
-                //res += a[i] - 1;
-                mp.erase(a[i]);
-                mp.erase(a[i] - 2);
-            }
+            res += (mp[x] * x);
+            mp.erase(x - 1);
+            mp[x]--;
+            if (mp[x] == 0)
+                mp.erase(x);
+            a.erase(x);
+            a.erase(x - 1);
         }
-    }
+        // cout << res << ' ';
+    }*/
+    res = f(x);
     cout << res;
 }
 //------------------------------------------------------------------------------------
