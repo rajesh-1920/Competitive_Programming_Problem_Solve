@@ -24,9 +24,15 @@ void solve(void)
 {
     ll n, i, j, mx = 0, t;
     cin >> n;
-    vector<ll> a(n);
+    vector<ll> a;
+    map<ll, ll> mp;
     for (i = 0; i < n; i++)
-        cin >> a[i];
+    {
+        cin >> t;
+        a.pb(t);
+        mp.insert({t, i});
+    }
+    t = 1;
     while (true)
     {
         if (a.size() == 0)
@@ -34,12 +40,15 @@ void solve(void)
             cout << mx;
             rrr;
         }
-        t=a[0];
-        for (i = 1; i < a.size() - 1; i++)
-            if (t < a[i])
-            {
-                
-            }
+        auto it = (mp.lower_bound(t));
+        t = (*it).fi;
+        i = mp[t];
+        n = a.size();
+        while (i < n)
+        {
+            mp.erase(a[i]);
+            i++;
+        }
         mx++;
     }
 }

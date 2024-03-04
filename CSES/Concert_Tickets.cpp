@@ -23,50 +23,24 @@ void solve(void)
 {
     ll m, n, x;
     cin >> n >> m;
-    vector<ll> a;
-    vector<ll>::iterator it;
+    multiset<ll> a;
     while (n--)
     {
         cin >> x;
-        a.pb(x);
+        a.insert(x);
     }
-    sort(a.begin(), a.end());
     while (m--)
     {
         cin >> x;
-        if (a.size() > 0 && a.front() <= x)
+        auto it = a.upper_bound(x);
+        if (it != a.begin())
         {
-            it = lower_bound(a.begin(), a.end(), x);
-            while (true)
-            {
-                if (it == a.begin())
-                {
-                    if ((*it) <= x)
-                    {
-                        cout << (*it);
-                        a.erase(it);
-                    }
-                    else
-                        cout << -1;
-                    nl;
-                    break;
-                }
-                if (it != a.end())
-                    if ((*it) <= x)
-                    {
-                        cout << (*it);
-                        nl;
-                        a.erase(it);
-                        break;
-                    }
-                it--;
-            }
+            cout << (*--it);
+            a.erase(it);
         }
         else
-        {
             cout << -1;
-            nl;
-        }
+        nl;
     }
 }
 //------------------------------------------------------------------------------------

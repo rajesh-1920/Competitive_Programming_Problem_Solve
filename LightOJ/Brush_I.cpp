@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  04.03.2024
+// Date  :  03.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -7,7 +7,6 @@ typedef long long int ll;
 //----------------------------(definition section)-------------------------------------
 #define N (1LL * 1e18)
 #define MOD ((1LL * 1e9) + 7)
-#define sn 3000000+100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
@@ -23,6 +22,16 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, sum = 0, x;
+    cin >> n;
+    while (n--)
+    {
+        cin >> x;
+        if (x > 0)
+            sum += x;
+    }
+    cout << sum;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,10 +40,10 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
-        // cout << "Case " << T << ": ";
+        cout << "Case " << T << ": ";
         solve();
     }
     return 0;

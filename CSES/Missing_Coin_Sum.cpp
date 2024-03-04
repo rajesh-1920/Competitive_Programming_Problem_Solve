@@ -5,9 +5,8 @@
 using namespace std;
 typedef long long int ll;
 //----------------------------(definition section)-------------------------------------
-#define N (1LL * 1e18)
+#define N 1LL * 1e18
 #define MOD ((1LL * 1e9) + 7)
-#define sn 3000000+100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
@@ -21,8 +20,19 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-void solve()
+void solve(void)
 {
+    ll n, i, j;
+    cin >> n;
+    ll a[n];
+    map<ll, ll> mp;
+    for (i = 0; i < n; i++)
+    {
+        cin >> a[i];
+        mp[a[i]]++;
+    }
+    sort(a, a + n);
+    
 }
 //------------------------------------------------------------------------------------
 int main()
