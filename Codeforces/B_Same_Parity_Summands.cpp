@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  05.03.2024
+// Date  :  04.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -7,7 +7,7 @@ typedef long long int ll;
 //----------------------------(definition section)-------------------------------------
 #define N (1LL * 1e18)
 #define MOD ((1LL * 1e9) + 7)
-#define sn 3000000+100
+#define sn 3000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
@@ -23,6 +23,61 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, k, i;
+    cin >> n >> k;
+    if (k > n)
+    {
+        NO;
+        rrr;
+    }
+    if (n % k == 0)
+    {
+        YES;
+        i = n / k;
+        while (k--)
+            cout << i << ' ';
+        nl;
+        rrr;
+    }
+    if (n & 1)
+    {
+        if (k % 2 == 0)
+        {
+            NO;
+            rrr;
+        }
+        YES;
+        for (i = 1; i < k; i++)
+            cout << 1 << ' ';
+        cout << (n - k + 1);
+        nl;
+        rrr;
+    }
+    else
+    {
+        if (k & 1)
+        {
+            k--;
+            i = n - (k * 2);
+            if (i < 2 || (i & 1))
+            {
+                NO;
+                rrr;
+            }
+            YES;
+            while (k--)
+                cout << 2 << ' ';
+            cout << i;
+            nl;
+            rrr;
+        }
+        YES;
+        for (i = 1; i < k; i++)
+            cout << 1 << ' ';
+        cout << (n - k + 1);
+        nl;
+        rrr;
+    }
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +86,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";

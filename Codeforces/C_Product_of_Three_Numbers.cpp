@@ -7,7 +7,7 @@ typedef long long int ll;
 //----------------------------(definition section)-------------------------------------
 #define N (1LL * 1e18)
 #define MOD ((1LL * 1e9) + 7)
-#define sn 3000000+100
+#define sn 3000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
@@ -23,6 +23,36 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, a, b, c, t, i;
+    cin >> n;
+    map<ll, ll> mp;
+    for (i = 2; i * i <= n + 1; i++)
+    {
+        if (n % i == 0)
+        {
+            mp[i]++;
+            mp[n / i]++;
+        }
+    }
+    for (auto it : mp)
+    {
+        a = it.fi;
+        t = n / a;
+        for (i = 2; i * i <= t + 1; i++)
+        {
+            if (t % i == 0)
+            {
+                if (i != a && (t / i) != a && i != (t / i))
+                {
+                    YES;
+                    cout << a << ' ' << i << ' ' << (t / i);
+                    nl;
+                    rrr;
+                }
+            }
+        }
+    }
+    NO;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +61,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
