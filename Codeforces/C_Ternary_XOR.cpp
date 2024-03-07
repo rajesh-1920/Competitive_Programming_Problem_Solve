@@ -1,19 +1,13 @@
 // Author:  Rajesh Biswas
-// Date  :  16.02.2024
+// Date  :  07.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
 //----------------------------(definition section)-------------------------------------
-#define all(x) x.begin(), x.end()
-#define srt(X) sort(all(X))
-#define rev(X) reverse(all(X))
-#define rsrt(X) sort(X.rbegin(), X.rend())
-#define pi 3.141592653589793238462643383279502884197
-
-#define pa pair<ll, ll>
-#define vec vector<ll>
-#define vecp vector<pa>
+#define N (1LL * 1e18)
+#define MOD ((1LL * 1e9) + 7)
+#define sn 3000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
@@ -27,25 +21,42 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-void solve(void)
+void solve()
 {
-    ll n, k, x, a, i, tl = 0, in = 1;
-    cin >> k >> x >> a;
-    for (i = 0; i <= x; i++)
+    ll n, i, fl = 0;
+    string s1, s2, t;
+    cin >> n >> t;
+    for (i = 0; i < n; i++)
     {
-        if (in + tl > a)
+        if (fl)
         {
-            NO;
-            rrr;
+            s1.pb('0');
+            s2.pb(t[i]);
         }
-        tl += in;
-        in = tl / (k - 1);
-        in++;
+        else
+        {
+            if (t[i] == '2')
+            {
+                s1.pb('1');
+                s2.pb('1');
+            }
+            else if (t[i] == '0')
+            {
+                s1.pb('0');
+                s2.pb('0');
+            }
+            else
+            {
+                fl = 1;
+                s1.pb('1');
+                s2.pb('0');
+            }
+        }
     }
-    if ((in * k) > (tl))
-        YES;
-    else
-        NO;
+    cout << s1;
+    nl;
+    cout << s2;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -57,7 +68,7 @@ int main()
     cin >> test;
     for (T = 1; T <= test; T++)
     {
-        // cout << "Case " << T << " : ";
+        // cout << "Case " << T << ": ";
         solve();
     }
     return 0;

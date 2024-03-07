@@ -1,19 +1,13 @@
 // Author:  Rajesh Biswas
-// Date  :  16.02.2024
+// Date  :  06.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
 //----------------------------(definition section)-------------------------------------
-#define all(x) x.begin(), x.end()
-#define srt(X) sort(all(X))
-#define rev(X) reverse(all(X))
-#define rsrt(X) sort(X.rbegin(), X.rend())
-#define pi 3.141592653589793238462643383279502884197
-
-#define pa pair<ll, ll>
-#define vec vector<ll>
-#define vecp vector<pa>
+#define N (1LL * 1e18)
+#define MOD 1000000007
+#define sn 2000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
@@ -27,25 +21,14 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-void solve(void)
+void solve()
 {
-    ll n, k, x, a, i, tl = 0, in = 1;
-    cin >> k >> x >> a;
-    for (i = 0; i <= x; i++)
-    {
-        if (in + tl > a)
-        {
-            NO;
-            rrr;
-        }
-        tl += in;
-        in = tl / (k - 1);
-        in++;
-    }
-    if ((in * k) > (tl))
-        YES;
-    else
-        NO;
+    ll n, i, res = 1;
+    cin >> n;
+    for (i = 3; i <= 2 * n; i++)
+        res = ((res % MOD) * (i % MOD)) % MOD;
+    cout << res;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -57,7 +40,7 @@ int main()
     cin >> test;
     for (T = 1; T <= test; T++)
     {
-        // cout << "Case " << T << " : ";
+        // cout << "Case " << T << ": ";
         solve();
     }
     return 0;
