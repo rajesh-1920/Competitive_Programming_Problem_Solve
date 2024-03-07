@@ -25,6 +25,44 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, m, i, x, y;
+    char ch;
+    cin >> n >> m;
+    vector<ll> a(n);
+    for (i = 0; i < n; i++)
+        cin >> a[i];
+    while (m--)
+    {
+        cin >> ch;
+        if (ch == 'S')
+        {
+            cin >> x;
+            for (i = 0; i < n; i++)
+                a[i] += x;
+        }
+        else if (ch == 'M')
+        {
+            cin >> x;
+            for (i = 0; i < n; i++)
+                a[i] *= x;
+        }
+        else if (ch == 'D')
+        {
+            cin >> x;
+            for (i = 0; i < n; i++)
+                a[i] /= x;
+        }
+        else if (ch == 'P')
+        {
+            cin >> x >> y;
+            swap(a[x], a[y]);
+        }
+        else
+            reverse(a.begin(), a.end());
+    }
+    for (auto it : a)
+        cout << it << ' ';
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -36,7 +74,7 @@ int main()
     cin >> test;
     for (T = 1; T <= test; T++)
     {
-        cout << "Case " << T << ": ";
+        cout << "Case " << T << ":\n";
         solve();
     }
     return 0;

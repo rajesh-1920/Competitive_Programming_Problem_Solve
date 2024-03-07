@@ -25,6 +25,16 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    string s, r = "https";
+    cin >> s;
+    reverse(s.begin(), s.end());
+    int i = s.size() - 1;
+    for (; s[i] != ':'; i--)
+        s.pop_back();
+    reverse(s.begin(), s.end());
+    r += s;
+    cout << r;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
