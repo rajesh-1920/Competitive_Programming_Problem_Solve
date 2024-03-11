@@ -23,6 +23,14 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n,m,x,k;
+    cin>>n>>m>>x;
+    ll a[k];
+    while (m--)
+    {
+        /* code */
+    }
+    
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +39,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
