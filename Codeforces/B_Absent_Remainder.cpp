@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  11.03.2024
+// Date  :  14.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,62 +23,32 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
-    ll n, m, x, k, d;
-    char ch;
-    cin >> n >> m >> x;
-    set<ll> a;
-    a.insert(x);
-    while (m--)
+    ll n, i, x, j, cnt = 0;
+    cin >> n;
+    vector<ll> a;
+    map<ll,ll>mp;
+    for (i = 0; i < n; i++)
     {
-        set<ll> temp;
-        ll t1, t2;
-        cin >> d >> ch;
-        if (ch == '0')
-        {
-            for (auto it : a)
-            {
-                t1 = it + d;
-                t1 %= n;
-                if (!t1)
-                    t1 = n;
-                temp.insert(t1);
-            }
-        }
-        else if (ch == '1')
-        {
-            for (auto it : a)
-            {
-                t1 = it - d + n;
-                t1 %= n;
-                if (!t1)
-                    t1 = n;
-                temp.insert(t1);
-            }
-        }
-        else
-        {
-            for (auto it : a)
-            {
-                t1 = it + d;
-                t2 = it - d + n;
-                t1 %= n;
-                t2 %= n;
-                if (!t1)
-                    t1 = n;
-                if (!t2)
-                    t2 = n;
-                temp.insert(t1);
-                temp.insert(t2);
-            }
-        }
-        a.clear();
-        a = temp;
+        cin >> x;
+        a.pb(x);
+        mp[x]++;
     }
-    cout << a.size();
-    nl;
-    for (auto it : a)
-        cout << it << ' ';
-    nl;
+    sort(a.begin(), a.end());
+    for (i = 0; i < n; i++)
+        for (j = n - 1; j >= 0; j--)
+        {
+            if (a[i] >= a[j])
+                break;
+            x = a[j] % a[i];
+            if (mp[x]==0)
+            {
+                cnt++;
+                cout << a[j] << ' ' << a[i];
+                nl;
+            }
+            if (cnt == (n / 2))
+                rrr;
+        }
 }
 //------------------------------------------------------------------------------------
 int main()

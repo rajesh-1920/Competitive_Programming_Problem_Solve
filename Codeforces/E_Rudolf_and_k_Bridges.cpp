@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  11.03.2024
+// Date  :  14.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,61 +23,31 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
-    ll n, m, x, k, d;
-    char ch;
-    cin >> n >> m >> x;
-    set<ll> a;
-    a.insert(x);
-    while (m--)
+    ll n, m, k, d, i, t, x, l, mn = 100000000000000;
+    cin >> n >> m >> k >> d;
+    vector<ll> a(n + 1, 0);
+    l = 0;
+    for (t = 1; t <= n; t++)
     {
-        set<ll> temp;
-        ll t1, t2;
-        cin >> d >> ch;
-        if (ch == '0')
+        vector<ll> vec(m, 0);
+        multiset<ll> s;
+        ll pos = 0;
+        cin >> x;
+        vec[0] = 1;
+        s.insert(1);
+        for (i = 1; i < m; i++)
         {
-            for (auto it : a)
-            {
-                t1 = it + d;
-                t1 %= n;
-                if (!t1)
-                    t1 = n;
-                temp.insert(t1);
-            }
+            cin >> x;
+            vec[i] = x + 1 + (*s.begin());
+            s.insert(vec[i]);
+            if (i > d)
+                s.erase(s.find(vec[pos++]));
         }
-        else if (ch == '1')
-        {
-            for (auto it : a)
-            {
-                t1 = it - d + n;
-                t1 %= n;
-                if (!t1)
-                    t1 = n;
-                temp.insert(t1);
-            }
-        }
-        else
-        {
-            for (auto it : a)
-            {
-                t1 = it + d;
-                t2 = it - d + n;
-                t1 %= n;
-                t2 %= n;
-                if (!t1)
-                    t1 = n;
-                if (!t2)
-                    t2 = n;
-                temp.insert(t1);
-                temp.insert(t2);
-            }
-        }
-        a.clear();
-        a = temp;
+        a[t] = a[t - 1] + vec[m - 1];
+        if (t >= k)
+            mn = min(mn, (a[t] - a[t - k]));
     }
-    cout << a.size();
-    nl;
-    for (auto it : a)
-        cout << it << ' ';
+    cout << mn;
     nl;
 }
 //------------------------------------------------------------------------------------

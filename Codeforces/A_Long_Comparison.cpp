@@ -7,13 +7,13 @@ typedef long long int ll;
 //----------------------------(definition section)-------------------------------------
 #define N (1LL * 1e18)
 #define MOD ((1LL * 1e9) + 7)
-#define sn 3000000+100
+#define sn 3000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
 
-#define No cout << "No\n"a
+#define No cout << "No\n" a
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
 #define NO cout << "NO\n"
@@ -23,6 +23,29 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll x, y, i;
+    string a, b;
+    cin >> a >> x >> b >> y;
+    if (a.length() + x > b.length() + y)
+        cout << '>';
+    else if (a.length() + x < b.length() + y)
+        cout << '<';
+    else
+    {
+        if (a.length() > b.length())
+            while (b.length() < a.length())
+                b.pb('0');
+        else
+            while (b.length() > a.length())
+                a.pb('0');
+        if (a == b)
+            cout << '=';
+        else if (a < b)
+            cout << '<';
+        else
+            cout << '>';
+    }
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +54,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
