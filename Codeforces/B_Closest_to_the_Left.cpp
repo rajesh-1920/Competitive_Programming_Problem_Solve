@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  16.03.2024
+// Date  :  14.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -7,13 +7,13 @@ typedef long long int ll;
 //----------------------------(definition section)-------------------------------------
 #define N (1LL * 1e18)
 #define MOD ((1LL * 1e9) + 7)
-#define sn 3000000+100
+#define sn 3000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
 
-#define No cout << "No\n"a
+#define No cout << "No\n" a
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
 #define NO cout << "NO\n"
@@ -23,6 +23,27 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, k, i, j, m, x;
+    cin >> n >> k;
+    ll a[n];
+    for (i = 0; i < n; i++)
+        cin >> a[i];
+    while (k--)
+    {
+        cin >> x;
+        i = -1;
+        j = n;
+        while (i + 1 < j)
+        {
+            m = (i + j) / 2;
+            if (a[m] <= x)
+                i = m;
+            else
+                j = m;
+        }
+        cout << i + 1;
+        nl;
+    }
 }
 //------------------------------------------------------------------------------------
 int main()

@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  16.03.2024
+// Date  :  15.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -7,13 +7,13 @@ typedef long long int ll;
 //----------------------------(definition section)-------------------------------------
 #define N (1LL * 1e18)
 #define MOD ((1LL * 1e9) + 7)
-#define sn 3000000+100
+#define sn 3000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
 
-#define No cout << "No\n"a
+#define No cout << "No\n" a
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
 #define NO cout << "NO\n"
@@ -23,6 +23,29 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, i;
+    cin >> n;
+    if (n & 1)
+    {
+        NO;
+        rrr;
+    }
+    if (n % 2 == 0)
+    {
+        YES;
+        i = 0;
+        while (i < n)
+        {
+            cout << "AAA";
+            i += 2;
+            if (i < n)
+            {
+                cout << "BBB";
+                i += 2;
+            }
+        }
+    }
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +54,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
