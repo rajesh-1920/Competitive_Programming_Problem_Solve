@@ -1,1 +1,0 @@
-{"name":"Local: A","url":"d:\\c++ programming\\Codeforces\\A. Line to Cashier.cpp","tests":[{"id":1706113784017,"input":"1\n1\n1","output":"20"},{"id":1706113805026,"input":"4\n1 4 3 2\n100\n1 2 2 3\n1 9 1\n7 8","output":"100"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\Codeforces\\A. Line to Cashier.cpp","group":"local","local":true}

@@ -1,1 +1,0 @@
-{"name":"Local: W","url":"d:\\c++ programming\\Codeforces\\W. Reach Value.cpp","tests":[{"id":1707485282664,"input":"5\n1\n2\n10\n25\n200","output":"YES\nNO\nYES\nNO\nYES"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\Codeforces\\W. Reach Value.cpp","group":"local","local":true}

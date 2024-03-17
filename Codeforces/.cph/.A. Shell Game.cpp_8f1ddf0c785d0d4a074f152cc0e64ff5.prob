@@ -1,1 +1,0 @@
-{"name":"Local: A","url":"d:\\c++ programming\\Codeforces\\A. Shell Game.cpp","tests":[{"id":1704719947116,"input":"1\n1 2\n2 1\n2 1","output":"2"},{"id":1704719964075,"input":"1\n2 1\n3 1\n1 3","output":"2"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\Codeforces\\A. Shell Game.cpp","group":"local","local":true}

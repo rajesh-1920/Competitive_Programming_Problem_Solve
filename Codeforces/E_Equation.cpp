@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  17.03.2024
+// Date  :  16.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,11 +23,30 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    long double c, l, r, m;
+    ll t = 200;
+    cin >> c;
+    l = 0;
+    r = 1e9 + 7.0;
+    while (t--)
+    {
+        m = (l + r) / 2;
+        if (m * m + (sqrt(m)) == c)
+        {
+            cout << m;
+            rrr;
+        }
+        else if (m * m + (sqrt(m)) >= c)
+            r = m;
+        else
+            l = m;
+    }
+    cout << r;
 }
 //------------------------------------------------------------------------------------
 int main()
 {
-    // cout << fixed << showpoint << setprecision(0);
+    cout << fixed << showpoint << setprecision(15);
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;

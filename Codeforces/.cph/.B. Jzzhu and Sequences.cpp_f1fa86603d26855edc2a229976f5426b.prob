@@ -1,1 +1,0 @@
-{"name":"Local: B","url":"d:\\c++ programming\\Codeforces\\B. Jzzhu and Sequences.cpp","tests":[{"id":1700395406636,"input":"2 3\n3","output":"1"},{"id":1700395419037,"input":"0 -1\n2","output":"1000000006"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\Codeforces\\B. Jzzhu and Sequences.cpp","group":"local","local":true}

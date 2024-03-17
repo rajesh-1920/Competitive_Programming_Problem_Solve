@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  17.03.2024
+// Date  :  16.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,6 +23,14 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, k, t;
+    cin >> n >> k;
+    t = (n * (n - 1)) / 2;
+    if (t == k || n - 1 <= k)
+        cout << 1;
+    else
+        cout << n;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +39,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";

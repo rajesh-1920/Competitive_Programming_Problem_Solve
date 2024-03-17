@@ -23,6 +23,31 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, k, i, x, res = 0;
+    cin >> k >> n;
+    multiset<ll> s;
+    while (n--)
+    {
+        cin >> x;
+        s.insert(x);
+    }
+    while (s.size() >= k)
+    {
+        auto it = --s.end();
+        x = k;
+        multiset<ll> s1;
+        while (x--)
+        {
+            i = *it;
+            s.erase(it--);
+            if (i > 1)
+                s1.insert(i - 1);
+        }
+        if (s1.size() > 0)
+            s.insert(s1.begin(), s1.end());
+        res++;
+    }
+    cout << res;
 }
 //------------------------------------------------------------------------------------
 int main()

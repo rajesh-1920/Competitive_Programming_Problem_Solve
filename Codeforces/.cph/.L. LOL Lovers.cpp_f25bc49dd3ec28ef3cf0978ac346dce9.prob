@@ -1,1 +1,0 @@
-{"name":"Local: L","url":"d:\\c++ programming\\Codeforces\\L. LOL Lovers.cpp","tests":[{"id":1702454487085,"input":"4\nOLOL","output":"-1"},{"id":1702454541097,"input":"10\nLLOOOOLLLO","output":"5"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\Codeforces\\L. LOL Lovers.cpp","group":"local","local":true}

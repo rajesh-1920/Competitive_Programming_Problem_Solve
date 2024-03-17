@@ -1,1 +1,0 @@
-{"name":"Local: B","url":"d:\\c++ programming\\Codeforces\\B. Milena and Admirer.cpp","tests":[{"id":1700407017338,"input":"4\n3\n1 3 2\n4\n1 2 3 4\n3\n3 2 1\n7\n1 4 4 3 5 7 6","output":"1\n0\n3\n9"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\Codeforces\\B. Milena and Admirer.cpp","group":"local","local":true}

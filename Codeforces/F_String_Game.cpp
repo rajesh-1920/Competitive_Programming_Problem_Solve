@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  17.03.2024
+// Date  :  16.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,6 +23,12 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    string t, s;
+    cin >> t >> s;
+    ll n = t.size(), i;
+    ll a[n];
+    for (i = 0; i < n; i++)
+        cin >> a[i];
 }
 //------------------------------------------------------------------------------------
 int main()

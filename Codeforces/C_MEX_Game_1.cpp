@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  17.03.2024
+// Date  :  16.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,6 +23,25 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, i, x, t = 0;
+    cin >> n;
+    map<ll, ll> mp;
+    for (i = 0; i < n; i++)
+    {
+        cin >> x;
+        mp[x]++;
+    }
+    for (i = 0; i <= n + 10; i++)
+    {
+        if (!mp[i] || (t && mp[i] == 1))
+        {
+            cout << i;
+            nl;
+            rrr;
+        }
+        if (mp[i] == 1)
+            t++;
+    }
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +50,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";

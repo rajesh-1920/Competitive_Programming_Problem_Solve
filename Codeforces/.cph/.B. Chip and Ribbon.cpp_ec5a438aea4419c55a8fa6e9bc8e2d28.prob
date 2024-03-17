@@ -1,1 +1,0 @@
-{"name":"Local: B","url":"d:\\c++ programming\\Codeforces\\B. Chip and Ribbon.cpp","tests":[{"id":1700837309350,"input":"4\n4\n1 2 2 1\n5\n1 0 1 0 1\n5\n1 4 3 4 5\n1\n12","output":"1\n2\n4\n11"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\Codeforces\\B. Chip and Ribbon.cpp","group":"local","local":true}

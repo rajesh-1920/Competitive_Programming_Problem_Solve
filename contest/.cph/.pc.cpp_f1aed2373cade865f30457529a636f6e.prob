@@ -1,1 +1,0 @@
-{"name":"Local: pc","url":"d:\\c++ programming\\contest\\pc.cpp","tests":[{"id":1701446543516,"input":"1 3","output":"C"},{"id":1701448240587,"input":"2 12","output":"F"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\contest\\pc.cpp","group":"local","local":true}

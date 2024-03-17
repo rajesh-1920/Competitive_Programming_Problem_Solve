@@ -1,1 +1,0 @@
-{"name":"Local: A","url":"d:\\c++ programming\\Codeforces\\A. Marks.cpp","tests":[{"id":1706189354977,"input":"3 3\n223\n232\n112","output":"2"},{"id":1706189400245,"input":"3 5\n91728\n11828\n11111","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\c++ programming\\Codeforces\\A. Marks.cpp","group":"local","local":true}
