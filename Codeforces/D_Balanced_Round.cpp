@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  14.03.2024
+// Date  :  18.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,61 +23,38 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
-    string s1, s2;
-    cin >> s1 >> s2;
-    ll i, acpos = 0, pos = 0, cnt = 0;
-    for (i = 0; i < s1.size(); i++)
+    ll n, k, x, i;
+    cin >> n >> k;
+    vector<ll> a;
+    while (n--)
     {
-        if (s1[i] == '+')
-            acpos++;
-        else if (s1[i] == '-')
-            acpos--;
+        cin >> x;
+        a.push_back(x);
     }
-    for (i = 0; i < s2.size(); i++)
+    sort(a.begin(), a.end());
+    x = 1;
+    n = 1;
+    for (i = 1; i < a.size(); i++)
     {
-        if (s2[i] == '+')
-            pos++;
-        else if (s2[i] == '-')
-            pos--;
+        if (a[i] - a[i - 1] <= k)
+        {
+            n++;
+            x = max(x, n);
+        }
         else
-            cnt++;
+            n = 1;
     }
-    double res;
-    if (pos == acpos)
-    {
-        if (!cnt)
-            res = 1;
-        else if (cnt & 1)
-            res = 0;
-        else
-            res = 1.0 / (1LL << (cnt - 1));
-        cout << res;
-        nl;
-        rrr;
-    }
-    if (pos - cnt <= acpos && acpos <= pos + cnt)
-    {
-        res = (double)(1LL << 2) / (1LL << cnt);
-        cout << res;
-        nl;
-        rrr;
-    }
-    else
-    {
-        res = 0;
-        cout << res;
-        nl;
-        rrr;
-    }
+    cout << (a.size() - x);
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
 {
-    cout << fixed << showpoint << setprecision(12);
+    // cout << fixed << showpoint << setprecision(0);
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
