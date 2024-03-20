@@ -1,19 +1,18 @@
 // Author:  Rajesh Biswas
-// Date  :  19.03.2024
+// Date  :  20.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
 //----------------------------(definition section)-------------------------------------
-#define N (1LL * 1e18)
+#define N 1LL * 1e18
 #define MOD ((1LL * 1e9) + 7)
-#define sn 3000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
 
-#define No cout << "No\n" a
+#define No cout << "No\n"
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
 #define NO cout << "NO\n"
@@ -21,8 +20,40 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-void solve()
+vector<ll> vec;
+ll n, k;
+bool good(ll x)
 {
+    ll s = 0;
+    for (auto it : vec)
+    {
+        if (it > x)
+            return false;
+        s += (x / it);
+        if (s >= k)
+            return true;
+    }
+    return false;
+}
+void solve(void)
+{
+    cin >> n >> k;
+    ll m = n, x, l = 0, r = 2e18;
+    while (m--)
+    {
+        cin >> x;
+        vec.pb(x);
+    }
+    sort(vec.begin(), vec.end());
+    while (l + 1 < r)
+    {
+        m = (l + r) / 2;
+        if (good(m))
+            r = m;
+        else
+            l = m;
+    }
+    cout << r;
 }
 //------------------------------------------------------------------------------------
 int main()

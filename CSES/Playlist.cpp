@@ -1,19 +1,18 @@
 // Author:  Rajesh Biswas
-// Date  :  19.03.2024
+// Date  :  20.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
 //----------------------------(definition section)-------------------------------------
-#define N (1LL * 1e18)
+#define N 1LL * 1e18
 #define MOD ((1LL * 1e9) + 7)
-#define sn 3000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
 
-#define No cout << "No\n" a
+#define No cout << "No\n"
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
 #define NO cout << "NO\n"
@@ -21,8 +20,26 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-void solve()
+void solve(void)
 {
+    ll n, i = 0, j, mx = 0;
+    cin >> n;
+    ll a[n];
+    unordered_map<ll, ll> mp;
+    for (j = 0; j < n; j++)
+    {
+        cin >> a[j];
+        mp[a[j]]++;
+        while (true)
+        {
+            if (mp[a[j]] <= 1)
+                break;
+            mp[a[i]]--;
+            i++;
+        }
+        mx = max(mx, j - i + 1);
+    }
+    cout << mx;
 }
 //------------------------------------------------------------------------------------
 int main()

@@ -20,51 +20,31 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
+bool cmp(pair<ll, ll> a, pair<ll, ll> b)
+{
+    return b.sc > a.sc;
+}
 void solve(void)
 {
-    ll i, j, n, a, b, mx = 0, cnt;
+    ll n, mx=0, x, y;
     cin >> n;
-    map<ll, ll> mp;
-    vector<pair<ll, ll>> s;
-    for (i = 0; i < n; i++)
+    vector<pair<ll, ll>> vec;
+    while (n--)
     {
-        cin >> a >> b;
-        s.push_back({a, b});
-        if (mp[a] == 0 || mp[a] > b)
-            mp[a] = b;
+        cin >> x >> y;
+        vec.ppb(x, y);
     }
-    sort(s.begin(), s.end());
-    for (i = 0; i < n; i++)
+    sort(vec.begin(), vec.end(), cmp);
+    x = 0;
+    for (auto it : vec)
     {
-        if (mx > (n - i + 10))
-            break;
-        cnt = 1;
-        for (j = i + 1; j < n; j++)
+        if (x <= it.fi)
         {
-            cnt = 1;
-            a = s[i].sc;
-            b = s[j].fi;
-            if (b >= a)
-            {
-                //while (true)
-                {
-                    auto iit = lower_bound(s.begin(), s.end(), a);
-                    //if (iit == s.end())
-                       // break;
-                    //a = (iit)->fi;
-                    a = mp[a];
-                    cnt++;
-                }
-            }
-            mx = max(cnt, mx);
+            mx++;
+            x = it.sc;
         }
     }
     cout << mx;
-    /*for (auto it : s)
-    {
-        cout << it.fi << ' ' << it.sc;
-        nl;
-    }*/
 }
 //------------------------------------------------------------------------------------
 int main()

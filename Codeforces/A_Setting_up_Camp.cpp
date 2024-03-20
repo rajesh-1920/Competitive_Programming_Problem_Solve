@@ -23,6 +23,35 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll a, b, c, t;
+    cin >> a >> b >> c;
+    if (b % 3 == 0)
+    {
+        t = c / 3;
+        if (c % 3)
+            t++;
+        t += a;
+        t += (b / 3);
+        cout << t;
+        nl;
+    }
+    else
+    {
+        t = b % 3;
+        b /= 3;
+        a += b;
+        if ((t == 1 && c <= 1) || (t == 2 && c == 0))
+        {
+            mm;
+            rrr;
+        }
+        t += c;
+        b = t / 3;
+        if (t % 3)
+            b++;
+        cout << a + b;
+        nl;
+    }
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +60,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
