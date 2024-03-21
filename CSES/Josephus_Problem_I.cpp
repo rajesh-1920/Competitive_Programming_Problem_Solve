@@ -24,84 +24,40 @@ void solve(void)
 {
     ll n, i, j, fl = 1;
     cin >> n;
-    vector<ll> a, b, x, y;
-    j = n;
-    if (j % 2)
-        j--;
-    for (i = 2;; i += 2)
+    for (i = 2; i <= n; i += 2)
+        cout << i << ' ';
+    vector<ll> v;
+    if (n & 1)
     {
-        if (fl)
+        for (i = 1; i <= n; i += 4)
+            cout << i << ' ';
+        for (i = 3; i <= n; i += 4)
+            v.pb(i);
+        if (n % 4 == 1)
+            reverse(v.begin(), v.end());
+        for (auto it : v)
+            cout << it << ' ';
+    }
+    else
+    {
+        for (i = 3; i <= n; i += 4)
+            cout << i << ' ';
+        if (n % 4 == 2)
         {
-            if (i == j)
-            {
-                a.pb(i);
-                break;
-            }
-            if (i > j)
-                break;
-            a.pb(i);
-            b.pb(j);
-            fl = 0;
+            cout << 1 << ' ';
+            for (i = 5; i <= n; i += 4)
+                v.pb(i);
+            reverse(v.begin(), v.end());
         }
         else
         {
-            if (i == j)
-            {
-                b.pb(i);
-                break;
-            }
-            if (i > j)
-                break;
-            b.pb(i);
-            a.pb(j);
-            fl = 1;
+            for (i = 1; i <= n; i += 4)
+                v.pb(i);
+            reverse(v.begin(), v.end());
         }
-        j -= 2;
+        for (auto it : v)
+            cout << it << ' ';
     }
-    j = n;
-    if (n % 2 == 0)
-        j--;
-    fl = 1;
-    for (i = 1;; i += 2)
-    {
-        if (fl)
-        {
-            if (i == j)
-            {
-                x.pb(i);
-                break;
-            }
-            if (i > j)
-                break;
-            x.pb(i);
-            y.pb(j);
-            fl = 0;
-        }
-        else
-        {
-            if (i == j)
-            {
-                b.pb(i);
-                break;
-            }
-            if (i > j)
-                break;
-            y.pb(i);
-            x.pb(j);
-            fl = 1;
-        }
-        j -= 2;
-    }
-    reverse(b.begin(), b.end());
-    reverse(y.begin(), y.end());
-    for (auto it : a)
-        cout << it << ' ';
-    for (auto it : b)
-        cout << it << ' ';
-    for (auto it : x)
-        cout << it << ' ';
-    for (auto it : y)
-        cout << it << ' ';
 }
 //------------------------------------------------------------------------------------
 int main()

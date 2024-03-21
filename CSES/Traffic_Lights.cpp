@@ -22,28 +22,24 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
-    ll n, x, y, t, temp, i;
+    ll n, t, x, y;
     cin >> t >> n;
-    multiset<pair<ll, pair<ll, ll>>> mp;
-    multiset<pair<ll, pair<ll, ll>>>::iterator it;
-    mp.insert({t, {0, t}});
-    for (i = 0; i < n; i++)
+    multiset<ll> s, temp;
+    s.insert(t);
+    s.insert(0);
+    temp.insert(t);
+    while (n--)
     {
         cin >> t;
-        it = --mp.end();
-        x = (*it).sc.fi;
-        y = (*it).sc.sc;
-        if (t > x && t < y)
-        {
-            mp.erase(it);
-            temp = t - x;
-            mp.insert({temp, {x, t}});
-            temp = y - t;
-            mp.insert({temp, {t, y}});
-        }
-        it = --mp.end();
-        x = (*it).fi;
-        cout << x << ' ';
+        auto it = s.upper_bound(t);
+        y = *it;
+        it--;
+        x = *it;
+        temp.erase(temp.find(y - x));
+        temp.insert(t - x);
+        temp.insert(y - t);
+        cout << (*(--temp.end())) << ' ';
+        s.insert(t);
     }
 }
 //------------------------------------------------------------------------------------

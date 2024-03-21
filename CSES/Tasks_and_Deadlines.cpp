@@ -22,6 +22,22 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
+    ll n, s = 0, a, b;
+    cin >> n;
+    vector<pair<ll, ll>> v;
+    while (n--)
+    {
+        cin >> a >> b;
+        v.ppb(a, b);
+    }
+    sort(v.begin(), v.end());
+    a = 0;
+    for (auto it : v)
+    {
+        a += it.first;
+        s += (it.sc - a);
+    }
+    cout << s;
 }
 //------------------------------------------------------------------------------------
 int main()
