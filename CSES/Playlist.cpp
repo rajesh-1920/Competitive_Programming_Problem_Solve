@@ -25,19 +25,19 @@ void solve(void)
     ll n, i = 0, j, mx = 0;
     cin >> n;
     ll a[n];
-    unordered_map<ll, ll> mp;
+    unordered_map<ll, ll> mp, po;
     for (j = 0; j < n; j++)
     {
         cin >> a[j];
         mp[a[j]]++;
-        while (true)
+        if (mp[a[j]] == 2)
         {
-            if (mp[a[j]] <= 1)
-                break;
-            mp[a[i]]--;
-            i++;
+            if (po[a[j]] > i)
+                i = j;
         }
+        po[a[j]] = j;
         mx = max(mx, j - i + 1);
+        cout << a[j] << ' ' << ' ' << i << ' ' << j << '\n';
     }
     cout << mx;
 }
