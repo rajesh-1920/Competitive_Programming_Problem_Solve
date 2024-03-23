@@ -23,6 +23,22 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, k, i, j, cnt = 1, pp = 0, mx = 0;
+    cin >> n >> k;
+    ll a[n + 1];
+    a[0] = 0;
+    for (i = 1; i <= n; i++)
+    {
+        cin >> a[i];
+        mx = max(mx, a[i] - a[i - 1]);
+    }
+    ll res = a[1] - a[0];
+    if (mx < 2 * (k - a[n]))
+        res = (k - a[n]) * 2;
+    else
+        res = mx;
+    cout << res;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +47,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";

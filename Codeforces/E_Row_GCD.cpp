@@ -3,7 +3,7 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long int ll;
+typedef unsigned long long int ll;
 //----------------------------(definition section)-------------------------------------
 #define N (1LL * 1e18)
 #define MOD ((1LL * 1e9) + 7)
@@ -23,6 +23,22 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, m, x;
+    cin >> n >> m;
+    unordered_set<ll> s;
+    while (n--)
+    {
+        cin >> x;
+        s.insert(x);
+    }
+    while (m--)
+    {
+        cin >> x;
+        ll g = 0;
+        for (auto it : s)
+            g = __gcd(g, it + x);
+        cout << g << ' ';
+    }
 }
 //------------------------------------------------------------------------------------
 int main()

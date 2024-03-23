@@ -6,7 +6,6 @@ using namespace std;
 typedef long long int ll;
 //----------------------------(definition section)-------------------------------------
 #define N (1LL * 1e18)
-#define MOD ((1LL * 1e9) + 7)
 #define sn 3000000 + 100
 #define fi first
 #define sc second
@@ -21,8 +20,52 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
+vector<ll> a;
+ll maxSubArraySum(ll size)
+{
+    ll max_so_far = INT_MIN, max_ending_here = 0;
+
+    for (ll i = 0; i < size; i++)
+    {
+        max_ending_here = max_ending_here + a[i];
+        if (max_ending_here < 0)
+            max_ending_here = 0;
+        if (max_so_far < max_ending_here)
+            max_so_far = max_ending_here;
+    }
+    return max_so_far;
+}
 void solve()
 {
+    ll n, k, j, i, t = 0, MOD = 1000000007;
+    cin >> n >> k;
+    a.clear();
+    for (i = 0; i < n; i++)
+    {
+        cin >> j;
+        a.push_back(j);
+        t += j;
+    }
+    ll mx = maxSubArraySum(n);
+    if (mx < 0)
+    {
+        mx = 0;
+        if (t < 0 && ((t % MOD + mx % MOD) % MOD))
+            cout << ((t % MOD + mx % MOD) % MOD) + MOD;
+        else
+            cout << ((t % MOD + mx % MOD) % MOD);
+        nl;
+        rrr;
+    }
+    ll res = 0, m = 0;
+    while (k--)
+    {
+        m += (mx % MOD);
+        mx = (mx % MOD + mx % MOD) % MOD;
+    }
+    res = (t + MOD + m) % MOD;
+    cout << res;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +74,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";

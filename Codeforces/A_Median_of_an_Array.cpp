@@ -23,6 +23,26 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, i, po, t;
+    cin >> n;
+    ll b[n];
+    po = (n + 1) / 2;
+    for (i = 0; i < n; i++)
+    {
+        cin >> b[i];
+    }
+    ll cnt = 1;
+    sort(b, b + n);
+    t = b[po - 1];
+    for (i = po; i < n; i++)
+    {
+        if (t == b[i])
+            cnt++;
+        else
+            break;
+    }
+    cout << cnt;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +51,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
