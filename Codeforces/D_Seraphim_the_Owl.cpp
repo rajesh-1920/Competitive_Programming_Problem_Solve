@@ -4,7 +4,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
-typedef unsigned long long int ull;
 //----------------------------(definition section)-------------------------------------
 #define N (1LL * 1e18)
 #define MOD ((1LL * 1e9) + 7)
@@ -24,6 +23,22 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, m, i, cost = 0, mn = 1000000000000000;
+    cin >> n >> m;
+    ll a[n + 1], b[n];
+    for (i = 0; i < n; i++)
+        cin >> a[i];
+    for (i = 0; i < n; i++)
+        cin >> b[i];
+    for (i = m; i < n; i++)
+        cost += min(a[i], b[i]);
+    for (i = m - 1; i >= 0; i--)
+    {
+        mn = min(cost + a[i], mn);
+        cost += b[i];
+    }
+    cout << mn;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -32,7 +47,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";

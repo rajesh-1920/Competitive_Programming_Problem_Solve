@@ -24,6 +24,34 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, i, x, j, m, t1 = 0;
+    cin >> n >> x;
+    ll a[n];
+    for (i = 0; i < n; i++)
+    {
+        cin >> a[i];
+        if (a[i] == x)
+            t1 = i;
+    }
+    i = 0;
+    j = n;
+    while (i + 1 < j)
+    {
+        m = (i + j) / 2;
+        if (a[m] <= x)
+            i = m;
+        else
+            j = m;
+    }
+    if (a[i] == x)
+        cout << 0;
+    else
+    {
+        cout << 1;
+        nl;
+        cout << t1 + 1 << ' ' << i + 1;
+    }
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -32,7 +60,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
