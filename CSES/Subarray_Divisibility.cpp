@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  18.03.2024
+// Date  :  25.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -9,7 +9,6 @@ typedef long long int ll;
 #define MOD ((1LL * 1e9) + 7)
 #define fi first
 #define sc second
-#define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
 
 #define No cout << "No\n"
@@ -22,34 +21,30 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
-    ll n, x, y, i, j;
+    ll n, i;
     cin >> n;
-    map<ll, ll> mp, res;
-    vector<pair<pair<ll, ll>, ll>> a;
-    for (i = 0; i < n; i++)
-    {
-        cin >> x >> y;
-        a.push_back({{x, y}, i});
-    }
-    sort(a.begin(), a.end());
+    vector<ll> a(n + 1), s(n + 1, 0);
     for (i = 1; i <= n; i++)
     {
-        x = a[i - 1].fi.fi;
-        y = a[i - 1].fi.sc;
-        for (j = 1; j <= i + 5; j++)
-        {
-            if (mp[j] < x)
-            {
-                mp[j] = y;
-                res[a[i - 1].sc] = j;
-                break;
-            }
-        }
+        cin >> a[i];
+        s[i] = s[i - 1] + a[i];
     }
-    cout << mp.size();
-    nl;
-    for (auto it : res)
-        cout << it.sc << ' ';
+    map<ll, ll> mp;
+    for (i = 1; i <= n; i++)
+    {
+        s[i] %= n;
+        if (s[i] < 0)
+            s[i] += n;
+        s[i] %= n;
+        mp[s[i]]++;
+    }
+    ll res = mp[0];
+    for (i = 1; i <= n; i++)
+    {
+        mp[s[i]]--;
+        res += mp[s[i]];
+    }
+    cout << res;
 }
 //------------------------------------------------------------------------------------
 int main()

@@ -1,18 +1,20 @@
 // Author:  Rajesh Biswas
-// Date  :  18.03.2024
+// Date  :  24.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
+typedef unsigned long long int ull;
 //----------------------------(definition section)-------------------------------------
-#define N 1LL * 1e18
+#define N (1LL * 1e18)
 #define MOD ((1LL * 1e9) + 7)
+#define sn 3000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
 
-#define No cout << "No\n"
+#define No cout << "No\n" a
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
 #define NO cout << "NO\n"
@@ -20,36 +22,31 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-void solve(void)
+void solve()
 {
-    ll n, x, y, i, j;
+    ll n, i, cnt = 0, x, c2 = 0, c4 = 0;
     cin >> n;
-    map<ll, ll> mp, res;
-    vector<pair<pair<ll, ll>, ll>> a;
+    vector<ll> a(n), a4(n, 0), a2(n, 0);
+    for (i = 0; i < n; i++)
+        cin >> a[i];
+    for (i = n - 1; i >= 0; i--)
+    {
+        if (a[i] == 4)
+            c4++;
+        if (a[i] == 2)
+            c2++;
+        a4[i] = c4;
+        a2[i] = c2;
+    }
     for (i = 0; i < n; i++)
     {
-        cin >> x >> y;
-        a.push_back({{x, y}, i});
+        if (a[i] == 4)
+            cnt += (a4[i] - 1);
+        if (a[i] == 6)
+            cnt += a2[i];
     }
-    sort(a.begin(), a.end());
-    for (i = 1; i <= n; i++)
-    {
-        x = a[i - 1].fi.fi;
-        y = a[i - 1].fi.sc;
-        for (j = 1; j <= i + 5; j++)
-        {
-            if (mp[j] < x)
-            {
-                mp[j] = y;
-                res[a[i - 1].sc] = j;
-                break;
-            }
-        }
-    }
-    cout << mp.size();
+    cout << cnt;
     nl;
-    for (auto it : res)
-        cout << it.sc << ' ';
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -58,7 +55,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";

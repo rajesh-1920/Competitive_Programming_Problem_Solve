@@ -22,24 +22,28 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
-    ll n, i = 0, j, mx = 0;
+    ll n, i, mx = 0;
     cin >> n;
-    ll a[n];
-    unordered_map<ll, ll> mp, po;
-    for (j = 0; j < n; j++)
+    vector<ll> a(n + 1), p(n + 1);
+    for (i = 1; i <= n; i++)
+        cin >> a[i];
+    map<ll, ll> mp;
+    for (i = 1; i <= n; i++)
     {
-        cin >> a[j];
-        mp[a[j]]++;
-        if (mp[a[j]] == 2)
-        {
-            if (po[a[j]] > i)
-                i = j;
-        }
-        po[a[j]] = j;
-        mx = max(mx, j - i + 1);
-        cout << a[j] << ' ' << ' ' << i << ' ' << j << '\n';
+        if (!mp[a[i]])
+            p[i] = -1;
+        else
+            p[i] = mp[a[i]];
+        mp[a[i]] = i;
     }
-    cout << mx;
+    ll res = 0;
+    for (i = 1; i <= n; i++)
+    {
+        mx = max(mx, p[i]);
+        res = max(res, i - mx);
+    }
+    cout << res;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()

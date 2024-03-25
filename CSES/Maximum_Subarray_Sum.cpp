@@ -22,50 +22,20 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
-    ll i, n, mx = 0, j, t1 = 0, t2 = 0, t3 = 0;
+    ll n, i, s = 0, res = 0, mx = -10000000000000;
     cin >> n;
-    ll a[n + 1] = {0};
-    for (i = 1; i <= n; i++)
+    ll a[n];
+    for (i = 0; i < n; i++)
     {
-        cin >> j;
-        a[i] = a[i - 1] + j;
+        cin >> a[i];
+        s += a[i];
+        s = max(0LL, s);
+        res = max(res, s);
+        mx = max(mx, a[i]);
     }
-    i = 0;
-    j = 1;
-    while (true)
-    {
-        if (i == n && j == 1)
-        {
-            cout << mx;
-            rrr;
-        }
-        if (j < n)
-            t1 = a[j + 1] - a[i];
-        if (i < n)
-            t2 = a[j] - a[i + 1];
-        if (i < n && j < n)
-            t3 = a[j + 1] - a[i + 1];
-        if (t3 >= t1 && t3 >= t2)
-        {
-            mx = max(t3, mx);
-            if (j < n)
-                j++;
-            if (i < n)
-                i++;
-        }
-        else if (t2 >= t1 && t2 >= t3)
-        {
-            mx = max(t2, mx);
-            if (i < n)
-                i++;
-        }
-        else if (t1 >= t2 && t1 >= t3)
-        {
-            mx = max(t1, mx);
-            if (j < n)
-                j++;
-        }
-    }
+    if (!res)
+        res = mx;
+    cout << res;
 }
 //------------------------------------------------------------------------------------
 int main()
