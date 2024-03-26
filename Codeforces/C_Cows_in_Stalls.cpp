@@ -4,6 +4,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
+typedef unsigned long long int ull;
 //----------------------------(definition section)-------------------------------------
 #define N (1LL * 1e18)
 #define MOD ((1LL * 1e9) + 7)
@@ -21,28 +22,43 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
+ll n, k;
+vector<ll> v;
+bool good(ll m)
+{
+    ll pos = -1, cnt = 0;
+    for (auto it : v)
+    {
+        if (pos == -1 || (it - pos >= m))
+        {
+            cnt++;
+            pos = it;
+            if (cnt >= k)
+                return true;
+        }
+    }
+    return cnt >= k;
+}
 void solve()
 {
-    ll n, x, y;
-    cin >> n >> x >> y;
-    if (x > y)
-        swap(x, y);
-    ll l = 0, r = n + 20, m;
-    n--;
-    if (!n)
+    cin >> n >> k;
+    ll x, l = -1, r = 0, i, m;
+    for (i = 0; i < n; i++)
     {
-        cout << x;
-        rrr;
+        cin >> x;
+        v.push_back(x);
+        r = max(r, x + 10);
     }
+    sort(v.begin(), v.end());
     while (l + 1 < r)
     {
         m = (l + r) / 2;
-        if ((m / x) + (m / y) >= n)
-            r = m;
-        else
+        if (good(m))
             l = m;
+        else
+            r = m;
     }
-    cout << x + r;
+    cout << l;
 }
 //------------------------------------------------------------------------------------
 int main()

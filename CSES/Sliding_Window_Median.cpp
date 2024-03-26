@@ -1,19 +1,18 @@
 // Author:  Rajesh Biswas
-// Date  :  26.03.2024
+// Date  :  25.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
 //----------------------------(definition section)-------------------------------------
-#define N (1LL * 1e18)
+#define N 1LL * 1e18
 #define MOD ((1LL * 1e9) + 7)
-#define sn 3000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
 
-#define No cout << "No\n" a
+#define No cout << "No\n"
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
 #define NO cout << "NO\n"
@@ -21,28 +20,27 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-void solve()
+void solve(void)
 {
-    ll n, x, y;
-    cin >> n >> x >> y;
-    if (x > y)
-        swap(x, y);
-    ll l = 0, r = n + 20, m;
-    n--;
-    if (!n)
+    ll n, k, i, j = 0;
+    cin >> n >> k;
+    vector<ll> a(n);
+    multiset<ll> t;
+    for (i = 0; i < n; i++)
     {
-        cout << x;
-        rrr;
+        cin >> a[i];
+        t.insert(a[i]);
+        if (t.size() == k)
+        {
+            auto it = t.begin();
+            //advance(it, k / 2);
+            if (!(k & 1))
+                it--;
+            cout << *it << ' ';
+            t.erase(t.find(a[j]));
+            j++;
+        }
     }
-    while (l + 1 < r)
-    {
-        m = (l + r) / 2;
-        if ((m / x) + (m / y) >= n)
-            r = m;
-        else
-            l = m;
-    }
-    cout << x + r;
 }
 //------------------------------------------------------------------------------------
 int main()
