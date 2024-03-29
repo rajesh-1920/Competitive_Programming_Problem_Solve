@@ -22,35 +22,22 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
-    ll n, i, j, mx = 0, t;
+    ll n, i, x, cnt = 1;
     cin >> n;
-    vector<ll> a;
-    map<ll, ll> mp;
-    for (i = 0; i < n; i++)
+    vector<ll> s(n + 5, 0);
+    for (i = 1; i <= n; i++)
     {
-        cin >> t;
-        a.pb(t);
-        mp.insert({t, i});
+        cin >> x;
+        s[x] = i;
     }
-    t = 1;
-    while (true)
+    x = 0;
+    for (i = 1; i <= n; i++)
     {
-        if (a.size() == 0)
-        {
-            cout << mx;
-            rrr;
-        }
-        auto it = (mp.lower_bound(t));
-        t = (*it).fi;
-        i = mp[t];
-        n = a.size();
-        while (i < n)
-        {
-            mp.erase(a[i]);
-            i++;
-        }
-        mx++;
+        if (x > s[i])
+            cnt++;
+        x = s[i];
     }
+    cout << cnt;
 }
 //------------------------------------------------------------------------------------
 int main()

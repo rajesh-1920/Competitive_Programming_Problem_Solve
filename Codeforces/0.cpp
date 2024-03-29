@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  26.03.2024
+// Date  :  28.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -14,7 +14,7 @@ typedef unsigned long long int ull;
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
 
-#define No cout << "No\n" a
+#define No cout << "No\n"
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
 #define NO cout << "NO\n"

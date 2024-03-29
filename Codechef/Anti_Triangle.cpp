@@ -1,18 +1,20 @@
 // Author:  Rajesh Biswas
-// Date  :  04.03.2024
+// Date  :  24.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
+typedef unsigned long long int ull;
 //----------------------------(definition section)-------------------------------------
-#define N 1LL * 1e18
+#define N (1LL * 1e18)
 #define MOD ((1LL * 1e9) + 7)
+#define sn 3000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
 
-#define No cout << "No\n"
+#define No cout << "No\n" a
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
 #define NO cout << "NO\n"
@@ -20,13 +22,25 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-void solve(void)
+void solve()
 {
-    ll n, i, j;
-    cin >> n;
-    multiset<ll> s, t, r;
-    unordered_map<ll, ll> mp;
-   
+    ll n, l, s = 2;
+    cin >> n >> l;
+    while (n)
+    {
+        if (s + (s - 1) > l)
+            break;
+        cout << s << ' ';
+        s++;
+        n--;
+    }
+    s = l + l;
+    while (n--)
+    {
+        cout << s << ' ';
+        s += l;
+    }
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -35,7 +49,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";

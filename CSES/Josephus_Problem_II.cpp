@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  04.03.2024
+// Date  :  27.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -22,11 +22,28 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
-    ll n, i, j;
-    cin >> n;
-    multiset<ll> s, t, r;
-    unordered_map<ll, ll> mp;
-   
+    ll n, k, i, x;
+    cin >> n >> k;
+    ordered_set<ll> s;
+    for (i = 1; i <= n; i++)
+        s.insert(i);
+    auto it = s.begin();
+    while (s.size() > 0)
+    {
+        x = k % s.size();
+        while (x--)
+        {
+            it++;
+            if (it == s.end())
+                it = s.begin();
+        }
+        i = *it;
+        cout << i << ' ';
+        it++;
+        if (it == s.end())
+            it = s.begin();
+        s.erase(s.find(i));
+    }
 }
 //------------------------------------------------------------------------------------
 int main()

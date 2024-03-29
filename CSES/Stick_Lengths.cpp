@@ -22,25 +22,16 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
-    ll n, i, mn = 1e18, s = 0;
+    ll n, i, s = 0, mid;
     cin >> n;
     ll a[n];
     for (i = 0; i < n; i++)
         cin >> a[i];
     sort(a, a + n);
-    ll m = (a[0] + a[n - 1]) / 2;
-    for (i = m - 5; i <= m + 5; i++)
-    {
-        s = 0;
-        for (auto it : a)
-        {
-            s += 1LL * abs(it - i);
-            if (s >= mn)
-                break;
-        }
-        mn = min(mn, s);
-    }
-    cout << mn;
+    mid = a[(n - 1) / 2];
+    for (i = 0; i < n; i++)
+        s += 1LL * abs(mid - a[i]);
+    cout << s;
 }
 //------------------------------------------------------------------------------------
 int main()

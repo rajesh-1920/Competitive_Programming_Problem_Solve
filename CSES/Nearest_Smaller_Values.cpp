@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  25.03.2024
+// Date  :  27.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -22,27 +22,19 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
-    ll n, i, x;
-    cin >> n;
-    vector<ll> res;
-    set<ll> st;
+    ll n, x, i;
     map<ll, ll> mp;
+    mp[0] = 0;
+    cin >> n;
     for (i = 1; i <= n; i++)
     {
         cin >> x;
-        st.insert(x);
-        auto it = st.lower_bound(x);
-        if (it == st.begin())
-            res.push_back(0);
-        else
-        {
-            it--;
-            res.push_back(mp[*it]);
-        }
         mp[x] = i;
+        mp.erase(mp.upper_bound(x), mp.end());
+        auto it = mp.lower_bound(x);
+        it--;
+        cout << it->sc << ' ';
     }
-    for (auto it : res)
-        cout << it << ' ';
 }
 //------------------------------------------------------------------------------------
 int main()

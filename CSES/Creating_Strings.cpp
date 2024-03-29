@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  04.03.2024
+// Date  :  28.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -20,13 +20,31 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
+map<string, ll> mp;
+string s, s1;
+void allstring(string st)
+{
+    mp[st]++;
+    if (s1 == st || mp[st] > 1)
+        return;
+    ll i;
+    for (i = st.size() - 1; i > 0; i--)
+    {
+        swap(st[i], st[i - 1]);
+        allstring(st);
+    }
+}
 void solve(void)
 {
-    ll n, i, j;
-    cin >> n;
-    multiset<ll> s, t, r;
-    unordered_map<ll, ll> mp;
-   
+    cin >> s;
+    sort(s.begin(), s.end());
+    s1 = s;
+    sort(s1.rbegin(), s1.rend());
+    allstring(s);
+    cout << mp.size();
+    nl;
+    for (auto it : mp)
+        cout << it.fi << '\n';
 }
 //------------------------------------------------------------------------------------
 int main()

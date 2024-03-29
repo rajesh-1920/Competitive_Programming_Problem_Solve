@@ -1,18 +1,20 @@
 // Author:  Rajesh Biswas
-// Date  :  04.03.2024
+// Date  :  27.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
+typedef unsigned long long int ull;
 //----------------------------(definition section)-------------------------------------
-#define N 1LL * 1e18
+#define N (1LL * 1e18)
 #define MOD ((1LL * 1e9) + 7)
+#define sn 3000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
 
-#define No cout << "No\n"
+#define No cout << "No\n" a
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
 #define NO cout << "NO\n"
@@ -20,13 +22,36 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-void solve(void)
+void solve()
 {
-    ll n, i, j;
-    cin >> n;
-    multiset<ll> s, t, r;
-    unordered_map<ll, ll> mp;
-   
+    ll n, q, i, x, y;
+    cin >> n >> q;
+    vector<ll> a(n), res(n + 5, 0);
+    vector<pair<ll, ll>> v, vq;
+    for (i = 0; i < n; i++)
+        cin >> a[i];
+    while (q--)
+    {
+        cin >> x >> y;
+        res[x]++;
+        res[y + 1]--;
+        vq.ppb(x, y);
+    }
+    for (i = 1; i <= n; i++)
+    {
+        res[i] += res[i - 1];
+        v.ppb(res[i], i);
+    }
+    sort(a.rbegin(), a.rend());
+    sort(v.rbegin(), v.rend());
+    for (i = 0; i < n; i++)
+        res[v[i].sc] = a[i];
+    for (i = 1; i <= n; i++)
+        res[i] += res[i - 1];
+    ll sum = 0;
+    for (i = 0; i < vq.size(); i++)
+        sum += (res[vq[i].sc] - res[vq[i].fi - 1]);
+    cout << sum;
 }
 //------------------------------------------------------------------------------------
 int main()

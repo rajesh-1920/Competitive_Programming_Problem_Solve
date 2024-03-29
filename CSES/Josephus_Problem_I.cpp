@@ -22,42 +22,33 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
-    ll n, i, j, fl = 1;
+    ll n, i;
     cin >> n;
-    for (i = 2; i <= n; i += 2)
-        cout << i << ' ';
     vector<ll> v;
-    if (n & 1)
+    for (i = 1; i <= n; i++)
+        v.push_back(i);
+    while (v.size() > 1)
     {
-        for (i = 1; i <= n; i += 4)
-            cout << i << ' ';
-        for (i = 3; i <= n; i += 4)
-            v.pb(i);
-        if (n % 4 == 1)
-            reverse(v.begin(), v.end());
-        for (auto it : v)
-            cout << it << ' ';
-    }
-    else
-    {
-        for (i = 3; i <= n; i += 4)
-            cout << i << ' ';
-        if (n % 4 == 2)
+        vector<ll> temp;
+        for (i = 0; i < v.size(); i++)
         {
-            cout << 1 << ' ';
-            for (i = 5; i <= n; i += 4)
-                v.pb(i);
-            reverse(v.begin(), v.end());
+            if (i & 1)
+                cout << v[i] << ' ';
+            else
+                temp.push_back(v[i]);
+        }
+        if (v.size() & 1)
+        {
+            ll x = temp.back();
+            v.clear();
+            v.push_back(x);
+            temp.pop_back();
+            v.insert(v.begin() + 1, temp.begin(), temp.end());
         }
         else
-        {
-            for (i = 1; i <= n; i += 4)
-                v.pb(i);
-            reverse(v.begin(), v.end());
-        }
-        for (auto it : v)
-            cout << it << ' ';
+            v = temp;
     }
+    cout<<v[0];
 }
 //------------------------------------------------------------------------------------
 int main()
