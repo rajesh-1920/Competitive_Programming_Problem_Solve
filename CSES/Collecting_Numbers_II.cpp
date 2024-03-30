@@ -1,14 +1,12 @@
 // Author:  Rajesh Biswas
-// Date  :  30.03.2024
+// Date  :  28.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
-typedef unsigned long long int ull;
 //----------------------------(definition section)-------------------------------------
-#define N (1LL * 1e18)
+#define N 1LL * 1e18
 #define MOD ((1LL * 1e9) + 7)
-#define sn 3000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
@@ -22,8 +20,32 @@ typedef unsigned long long int ull;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-void solve()
+void solve(void)
 {
+    ll n, i, q, x, y, t;
+    cin >> n >> q;
+    vector<ll> a(n + 5, 0), re(n + 5);
+    for (i = 1; i <= n; i++)
+    {
+        cin >> x;
+        a[x] = i;
+        re[i] = x;
+    }
+    while (q--)
+    {
+        ll cnt = 1;
+        t = 0;
+        cin >> x >> y;
+        swap(a[re[x]], a[re[y]]);
+        for (i = 1; i <= n; i++)
+        {
+            if (t > a[i])
+                cnt++;
+            t = a[i];
+        }
+        cout << cnt;
+        nl;
+    }
 }
 //------------------------------------------------------------------------------------
 int main()

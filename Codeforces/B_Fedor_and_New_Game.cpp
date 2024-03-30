@@ -24,6 +24,19 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, m, k, i, cnt = 0, t, c;
+    cin >> n >> m >> k;
+    ll a[m + 1];
+    for (i = 0; i <= m; i++)
+        cin >> a[i];
+    for (i = 0; i < m; i++)
+    {
+        t = a[m] ^ a[i];
+        c = __builtin_popcount(t);
+        if (c <= k)
+            cnt++;
+    }
+    cout << cnt;
 }
 //------------------------------------------------------------------------------------
 int main()
