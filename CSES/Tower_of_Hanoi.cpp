@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  31.03.2024
+// Date  :  28.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -20,27 +20,27 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
+vector<pair<ll, ll>> v;
+void TowerOfHanoi(ll n, ll curr, ll to, ll mid)
+{
+    if (n == 1)
+    {
+        v.ppb(curr, to);
+        return;
+    }
+    TowerOfHanoi(n - 1, curr, mid, to);
+    v.ppb(curr, to);
+    TowerOfHanoi(n - 1, mid, to, curr);
+}
 void solve(void)
 {
-    ll n, j;
+    ll n;
     cin >> n;
-    multiset<ll> s;
-    while (n--)
-    {
-        cin >> j;
-        s.insert(j);
-    }
-    j = 0;
-    for (auto it : s)
-    {
-        if (j + 1 < it)
-        {
-            cout << j + 1;
-            rrr;
-        }
-        j += it;
-    }
-    cout << j + 1;
+    TowerOfHanoi(n, 1, 3, 2);
+    cout << v.size();
+    nl;
+    for (auto it : v)
+        cout << it.fi << ' ' << it.sc << '\n';
 }
 //------------------------------------------------------------------------------------
 int main()

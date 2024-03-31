@@ -1,12 +1,14 @@
 // Author:  Rajesh Biswas
-// Date  :  31.03.2024
+// Date  :  30.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
+typedef unsigned long long int ull;
 //----------------------------(definition section)-------------------------------------
-#define N 1LL * 1e18
+#define N (1LL * 1e18)
 #define MOD ((1LL * 1e9) + 7)
+#define sn 3000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
@@ -20,27 +22,24 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-void solve(void)
+void solve()
 {
-    ll n, j;
-    cin >> n;
-    multiset<ll> s;
-    while (n--)
+    ll n, k;
+    cin >> n >> k;
+    if (n == k)
     {
-        cin >> j;
-        s.insert(j);
+        while (n--)
+            cout << 1 << ' ';
     }
-    j = 0;
-    for (auto it : s)
+    else
     {
-        if (j + 1 < it)
-        {
-            cout << j + 1;
-            rrr;
-        }
-        j += it;
+        if (k == 1)
+            while (n--)
+                cout << k++ << ' ';
+        else
+            cout << -1;
     }
-    cout << j + 1;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -49,7 +48,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
