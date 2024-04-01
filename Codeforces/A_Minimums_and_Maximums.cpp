@@ -1,12 +1,14 @@
 // Author:  Rajesh Biswas
-// Date  :  28.03.2024
+// Date  :  30.03.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
+typedef unsigned long long int ull;
 //----------------------------(definition section)-------------------------------------
-#define N 1LL * 1e18
+#define N (1LL * 1e18)
 #define MOD ((1LL * 1e9) + 7)
+#define sn 3000000 + 100
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
@@ -20,31 +22,25 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-void solve(void)
+void solve()
 {
-    ll n, k, i, j, x, y, cnt = 0;
-    cin >> n >> k;
-    vector<ll> v(n + 5, 0), a(n + 5, 0);
-    for (i = 1; i <= n; i++)
+    ll l1, r1, l2, r2;
+    cin >> l1 >> r1 >> l2 >> r2;
+    if (l1 <= l2)
     {
-        cin >> a[i];
-        v[a[i]] = i;
+        if (r1 >= l2)
+            cout << l2;
+        else
+            cout << l2 + l1;
+        nl;
     }
-    x = 0;
-    for (i = 1; i <= n; i++)
+    else
     {
-        if (v[i] > x)
-            cnt++;
-        x = v[i];
-    }
-    while (k--)
-    {
-        cin >> x >> y;
-        x = a[x];
-        y = a[y];
-        if (x > y)
-            swap(x, y);
-        if(x>v[])
+        if (r2 >= l1)
+            cout << l1;
+        else
+            cout << l1 + l2;
+        nl;
     }
 }
 //------------------------------------------------------------------------------------
@@ -54,7 +50,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";

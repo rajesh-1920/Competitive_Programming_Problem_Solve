@@ -24,26 +24,19 @@ void solve(void)
 {
     ll n, k, i, x;
     cin >> n >> k;
-    ordered_set<ll> s;
-    for (i = 1; i <= n; i++)
-        s.insert(i);
-    auto it = s.begin();
-    while (s.size() > 0)
+    vector<ll> v(n);
+    for (i = 0; i < n; i++)
+        v[i] = i + 1;
+    i = 0;
+    while (v.size() > 1)
     {
-        x = k % s.size();
-        while (x--)
-        {
-            it++;
-            if (it == s.end())
-                it = s.begin();
-        }
-        i = *it;
-        cout << i << ' ';
-        it++;
-        if (it == s.end())
-            it = s.begin();
-        s.erase(s.find(i));
+        i += k;
+        i %= v.size();
+        x = v[i];
+        cout << x << ' ';
+        v.erase(remove(v.begin(), v.end(), x), v.end());
     }
+    cout << v[0];
 }
 //------------------------------------------------------------------------------------
 int main()
