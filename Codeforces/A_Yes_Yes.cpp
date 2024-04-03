@@ -24,6 +24,57 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    string s;
+    cin >> s;
+    ll i, fl = 0;
+    for (i = 0; i < s.size(); i++)
+    {
+        if (fl == 1)
+        {
+            if (s[i] == 'e')
+                fl = 2;
+            else
+            {
+                NO;
+                rrr;
+            }
+        }
+        else if (fl == 2)
+        {
+            if (s[i] == 's')
+                fl = 3;
+            else
+            {
+                NO;
+                rrr;
+            }
+        }
+        else if (fl == 3)
+        {
+            if (s[i] == 'Y')
+                fl = 1;
+            else
+            {
+                NO;
+                rrr;
+            }
+        }
+        if (fl == 0)
+        {
+            if (s[i] == 'Y')
+                fl = 1;
+            else if (s[i] == 'e')
+                fl = 2;
+            else if (s[i] == 's')
+                fl = 3;
+            else
+            {
+                NO;
+                rrr;
+            }
+        }
+    }
+    YES;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -32,7 +83,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";

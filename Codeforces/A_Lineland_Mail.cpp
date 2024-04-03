@@ -24,6 +24,42 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, i, mx, mn;
+    cin >> n;
+    vector<ll> a(n), t(n);
+    multiset<ll> s;
+    for (i = 0; i < n; i++)
+    {
+        cin >> a[i];
+        t[i] = a[i];
+    }
+    sort(t.begin(), t.end());
+    for (i = 0; i < n; i++)
+    {
+        if (a[i] == t[0])
+        {
+            mn = 1LL * abs(a[i] - t[1]);
+            mx = 1LL * abs(a[i] - t[n - 1]);
+        }
+        else if (a[i] == t[n - 1])
+        {
+            mx = 1LL * abs(a[i] - t[0]);
+            mn = 1LL * abs(a[i] - t[n - 2]);
+        }
+        else
+        {
+            mx = 1LL * abs(a[i] - t[0]);
+            mx = max(mx, 1LL * abs(a[i] - t[n - 1]));
+            auto it = lower_bound(t.begin(), t.end(), a[i]);
+            it--;
+            mn = 1LL * abs(a[i] - (*it));
+            it++;
+            it++;
+            mn = min(mn, 1LL * abs(a[i] - (*it)));
+        }
+        cout << mn << ' ' << mx;
+        nl;
+    }
 }
 //------------------------------------------------------------------------------------
 int main()
