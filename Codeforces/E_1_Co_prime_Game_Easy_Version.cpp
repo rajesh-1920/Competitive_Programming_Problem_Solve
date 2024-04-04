@@ -22,14 +22,10 @@ typedef unsigned long long int ull;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-vector<ll> a(N,0),div(N,0);
+vector<ll> a(N, 0), div(N, 0);
 void solve()
 {
-   ll i,j;
-   for(i=1;i<N;i++)
-   {
-
-   }
+    
 }
 //------------------------------------------------------------------------------------
 int main()
