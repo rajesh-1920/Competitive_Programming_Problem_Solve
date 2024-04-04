@@ -6,7 +6,7 @@ using namespace std;
 typedef long long int ll;
 typedef unsigned long long int ull;
 //----------------------------(definition section)-------------------------------------
-#define N (1LL * 1e18)
+#define N 1000000 + 20
 #define MOD ((1LL * 1e9) + 7)
 #define sn 3000000 + 100
 #define fi first
@@ -22,8 +22,14 @@ typedef unsigned long long int ull;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
+vector<ll> a(N,0),div(N,0);
 void solve()
 {
+   ll i,j;
+   for(i=1;i<N;i++)
+   {
+
+   }
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -32,7 +38,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";

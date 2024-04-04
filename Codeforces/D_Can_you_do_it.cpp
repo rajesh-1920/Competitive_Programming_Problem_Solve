@@ -24,15 +24,20 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    double x, ans;
+    cin >> x;
+    ans = (2 * (acos(0)) * x * x * x / 3);
+    cout << ans;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
 {
-    // cout << fixed << showpoint << setprecision(0);
+    cout << fixed << showpoint << setprecision(10);
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
@@ -43,4 +48,7 @@ int main()
 /*
 freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
+*/
+/*
+    for(auto &x:v)cin>>x;
 */

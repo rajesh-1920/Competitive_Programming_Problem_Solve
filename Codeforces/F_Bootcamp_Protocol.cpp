@@ -3,11 +3,9 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long int ll;
-typedef unsigned long long int ull;
+typedef unsigned long long int ll;
 //----------------------------(definition section)-------------------------------------
-#define N (1LL * 1e18)
-#define MOD ((1LL * 1e9) + 7)
+#define MOD (1000000000 + 7)
 #define sn 3000000 + 100
 #define fi first
 #define sc second
@@ -21,9 +19,40 @@ typedef unsigned long long int ull;
 #define mm cout << "-1\n"
 #define nl cout << "\n"
 #define rrr return
+const ll N = 1e5 + 10;
 //------------------------------------------------------------------------------------
+ll A[N][26];
+map<ll, ll> mp;
+ll largepow(ll a, ll b)
+{
+    ll ans = 1;
+    while (b > 0)
+    {
+        if (b & 1)
+            ans = (ans % MOD * a % MOD) % MOD;
+        a = (a % MOD * a % MOD) % MOD;
+        b >>= 1;
+    }
+    return ans;
+}
+ll fact(ll n)
+{
+    if (n == 1)
+        return 1;
+    if (mp[n])
+        return mp[n];
+    return mp[n] = (n % MOD * fact(n - 1) % MOD) % MOD;
+}
 void solve()
 {
+    ll a, b, c, n;
+    cin>>a>>b>>c;
+    a=(a/n);
+
+    ll s = fact(s) % MOD;
+    ll ans = (s % MOD * ((largepow(ans, (MOD - 2))) % MOD)) % MOD;
+    cout << ans - 1;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()

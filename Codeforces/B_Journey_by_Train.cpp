@@ -22,8 +22,42 @@ typedef unsigned long long int ull;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
+map<ll, vector<ll>> mp;
+map<ll, ll> m;
+vector<ll> v;
+ll n, mx = 1;
+void dfs(ll st, ll cnt)
+{
+    mx = max(mx, cnt);
+    if (m[st] == 0)
+    {
+        m[st]++;
+        for (auto it : mp[st])
+        {
+            if (v[it] > v[st])
+                dfs(it, cnt + 1);
+        }
+    }
+}
 void solve()
 {
+    ll s, i, x, y;
+    cin >> n >> s;
+    v.push_back(0);
+    for (i = 0; i < n; i++)
+    {
+        cin >> x;
+        v.push_back(x);
+    }
+    for (i = 1; i < n; i++)
+    {
+        cin >> x >> y;
+        mp[x].push_back(y);
+        mp[y].push_back(x);
+    }
+    dfs(s, 1);
+    cout << mx;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()

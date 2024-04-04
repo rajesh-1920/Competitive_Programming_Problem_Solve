@@ -24,6 +24,25 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll cnt = 0, i, c0 = 0;
+    ll n;
+    cin >> n;
+    while (n > 0)
+    {
+        if ((n % 10) != 0)
+            break;
+        cnt++;
+        n /= 10;
+    }
+    if (cnt == 0&&n!=0)
+        cout << "Ekok.";
+    else if (cnt == 1)
+        cout << "Dashak.";
+    else if (cnt == 2)
+        cout << "Shatak.";
+    else
+        cout << "Counterfeit.";
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -32,7 +51,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
