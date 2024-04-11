@@ -26,7 +26,7 @@ void solve()
 {
     ll n, c, d, i, j, x, mn = INT_MAX;
     cin >> n >> c >> d;
-    unordered_map<ll, ll> mp;
+    map<ll, ll> mp;
     for (i = 0; i < (n * n); i++)
     {
         cin >> x;
