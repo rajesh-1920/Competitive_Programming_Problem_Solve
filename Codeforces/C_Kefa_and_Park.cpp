@@ -21,8 +21,26 @@ typedef unsigned long long int ull;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
+vector<vector<ll>> v(N);
+ll cat[N];
+ll n, m,cnt;
+void dfs(ll cur)
+{
+    
+}
 void solve()
 {
+    ll i, x, y;
+    cin >> n >> m;
+    for (i = 1; i <= n; i++)
+        cin >> cat[i];
+    for (i = 1; i < n; i++)
+    {
+        cin >> x >> y;
+        v[x].push_back(y);
+    }
+    cnt=0;
+    dfs(1);
 }
 //------------------------------------------------------------------------------------
 int main()

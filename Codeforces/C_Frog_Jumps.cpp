@@ -23,6 +23,18 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll mx=0,cnt=1,i;
+    string s;
+    cin>>s;
+    for(i=0;i<s.size();i++)
+    {
+        if(s[i]=='L')
+        cnt++;
+        else
+        cnt=1;
+        mx=max(mx,cnt);
+    }
+    cout<<mx;nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +43,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
