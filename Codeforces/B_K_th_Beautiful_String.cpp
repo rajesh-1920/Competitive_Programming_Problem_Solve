@@ -23,6 +23,57 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, k, t, ca, cb = 0, cnt = 1;
+    cin >> n >> k;
+    ca = n - 2;
+    string s = "";
+    while (true)
+    {
+        if (cb == 2)
+        {
+            while (s.size() < n)
+                s.push_back('a');
+            cout << s;
+            nl;
+            rrr;
+        }
+        if (!ca)
+        {
+            while (s.size() < n)
+                s.push_back('b');
+            cout << s;
+            nl;
+            rrr;
+        }
+        t = 2 - cb;
+        if (cb)
+        {
+            if (k <= (n - cnt + 1)*(cnt-1))
+            {
+                s.push_back('a');
+                ca--;
+            }
+            else
+            {
+                s.push_back('b');
+                cb++;
+            }
+        }
+        else
+        {
+            if (k <= ((n - cnt) * (n - cnt - 1) / t))
+            {
+                s.push_back('a');
+                ca--;
+            }
+            else
+            {
+                s.push_back('b');
+                cb++;
+            }
+        }
+        cnt++;
+    }
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +82,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
