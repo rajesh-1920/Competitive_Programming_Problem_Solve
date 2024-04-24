@@ -21,8 +21,25 @@ typedef unsigned long long int ull;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
+ll w, n;
+pair<ll, ll> a[N];
+ll res(ll i, ll ww)
+{
+    if (i >= n)
+        return 0;
+    ll t1 = 0, t2 = 0;
+    if (a[i].fi + ww <= w)
+        t1 = res(i + 1, a[i].fi + ww) + a[i].sc;
+    t2 = res(i + 1, ww);
+    return max(t1, t2);
+}
 void solve()
 {
+    ll i;
+    cin >> n >> w;
+    for (i = 0; i < n; i++)
+        cin >> a[i].fi >> a[i].sc;
+    cout << (res(0, 0));
 }
 //------------------------------------------------------------------------------------
 int main()
