@@ -22,18 +22,19 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
-    ll i,cnt=1,mx=1;
-    string s;
-    cin>>s;
-    for(i=1;i<s.size();i++)
+    ll n;
+    cin>>n;
+    while (true)
     {
-        if(s[i]==s[i-1])
-        cnt++;
+        cout<<n<<' ';
+        if(n==1)
+        rrr;
+        if(n&1)
+        n=n*3+1;
         else
-        cnt=1;
-        mx=max(mx,cnt);
+        n/=2;
     }
-    cout<<mx;
+    
 }
 //------------------------------------------------------------------------------------
 int main()
