@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  26.04.2024
+// Date  :  27.04.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -39,7 +39,7 @@ void solve()
     ll i;
     for (i = 1; i <=n; i++)
         cin >> a[i];
-    res(0, 0);
+    res(a[1], 2);
     if (fl)
         YES;
     else
