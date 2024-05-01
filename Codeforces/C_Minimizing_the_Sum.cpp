@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  01.05.2024
+// Date  :  30.04.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,6 +23,34 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, k, sum = 0, i, sub = 0, x = 0, mn = INT_MAX;
+    cin >> n >> k;
+    multiset<pair<ll, pair<ll, ll>>> d;
+    for (i = 0; i < n; i++)
+    {
+        cin >> sub;
+        mn = min(mn, sub);
+        sum += sub;
+        if (i > 0)
+            d.insert({1LL * abs(sub - x), {x, sub}});
+        x = sub;
+    }
+    if (n+1 <= k)
+    {
+        cout << mn * n;
+        nl;
+        rrr;
+    }
+    sub = 0;
+    for (i = 0; i < k; i++)
+    {
+        auto it = --d.end();
+        x = (*it).fi;
+        d.erase(it);
+        sub += x;
+    }
+    cout << (sum - sub);
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +59,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
