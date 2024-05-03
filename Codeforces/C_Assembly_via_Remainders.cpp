@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  03.05.2024
+// Date  :  02.05.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,6 +23,25 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n, i, x, t;
+    cin >> n;
+    ll a[n];
+    for (i = 1; i < n; i++)
+        cin >> a[i];
+    x = a[1] + 1;
+    for (i = 1; i < n; i++)
+    {
+        cout << x << ' ';
+        t = x;
+        x += a[i];
+        if (i + 1 < n)
+        {
+            while (x <=a[i + 1] || x % t != a[i])
+                x += a[i];
+        }
+    }
+    cout << x;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +50,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
