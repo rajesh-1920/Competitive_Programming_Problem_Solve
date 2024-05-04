@@ -35,45 +35,21 @@ void solve()
     x = y = 0;
     for (i = 0; i < n; i++)
     {
-        if (h == v[i].fi)
+
+        if (h < v[i].fi || (h == v[i].fi && m <= v[i].sc))
         {
             fl = 0;
-            x = 0;
-            if (m <= v[0].sc)
-                y = v[0].sc - m;
-            else
-            {
-                x = 23;
-                y = v[0].sc + 60 - m;
-            }
-            break;
-        }
-        if (h < v[i].fi)
-        {
-            fl = 0;
-            x = v[i].fi - h;
-            if (m > v[i].sc)
-            {
-                x--;
-                y = 60 - m;
-            }
-            else
-                y = v[i].sc - m;
+            x = (60 * (v[i].fi - h) + v[i].sc - m);
             break;
         }
     }
     if (fl)
     {
-        x = 24 - h + v[0].fi;
-        if (m > v[0].sc)
-        {
-            x--;
-            y = 60 + v[0].sc - m;
-        }
-        else
-            y = 60 - m;
+        x = (60 * (v[0].fi - h) + v[0].sc - m);
+        if (x < 0)
+            x += (60 * 24);
     }
-    cout << x << ' ' << y;
+    cout << x / 60 << ' ' << x % 60;
     nl;
 }
 //------------------------------------------------------------------------------------
