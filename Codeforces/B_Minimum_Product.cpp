@@ -23,17 +23,48 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve()
 {
-    ll a, b, x, y, n, mn, i;
+    ll a, b, x, y, n, ta, tb, tn;
     cin >> a >> b >> x >> y >> n;
-    mn = a * (max(y, b - n));
-    for (i = 1; i <= n; i++)
+    ta = a;
+    tb = b;
+    tn = n;
+    ll t = b - y;
+    if (t <= n)
     {
-        a--;
-        if (a < x)
-            break;
-        mn = min(mn, a * (max(y, (b - n - i))));
+        b -= t;
+        n -= t;
     }
-    cout << mn;
+    else
+    {
+        b -= n;
+        n = 0;
+    }
+    ll r = a - x;
+    if (r <= n)
+        a -= r;
+    else
+        a -= n;
+    ll mn = (a * b);
+    n = tn;
+    a = ta;
+    b = tb;
+    t = a - x;
+    if (t <= n)
+    {
+        a -= t;
+        n -= t;
+    }
+    else
+    {
+        a -= n;
+        n = 0;
+    }
+    r = b - y;
+    if (r <= n)
+        b -= r;
+    else
+        b -= n;
+    cout << min(mn, (a * b));
     nl;
 }
 //------------------------------------------------------------------------------------

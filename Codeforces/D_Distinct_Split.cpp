@@ -1,19 +1,13 @@
 // Author:  Rajesh Biswas
-// Date  :  05.04.2024
+// Date  :  05.05.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
+typedef unsigned long long int ull;
 //----------------------------(definition section)-------------------------------------
-#define all(x) x.begin(), x.end()
-#define srt(X) sort(all(X))
-#define rev(X) reverse(all(X))
-#define rsrt(X) sort(X.rbegin(), X.rend())
-#define pi 3.141592653589793238462643383279502884197
-
-#define pa pair<ll, ll>
-#define vec vector<ll>
-#define vecp vector<pa>
+#define N 2000009
+#define MOD 1000000009
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
@@ -27,20 +21,40 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-void solve(void)
+void solve()
 {
+    ll n, mx = 0, i;
+    string s;
+    cin >> n >> s;
+    ll a[n + 1] = {0}, b[n + 2] = {0};
+    map<char, ll> mp;
+    for (i = 1; i <= n; i++)
+    {
+        mp[s[i - 1]]++;
+        a[i] = mp.size();
+    }
+    mp.clear();
+    for (i = n; i > 0; i--)
+    {
+        mp[s[i - 1]]++;
+        b[i] = mp.size();
+    }
+    for (i = 1; i <= n; i++)
+        mx = max(mx, (a[i] + b[i + 1]));
+    cout << mx;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
 {
-    //cout << fixed << showpoint << setprecision(0);
+    // cout << fixed << showpoint << setprecision(0);
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
-        // cout << "Case " << T << " : ";
+        // cout << "Case " << T << ": ";
         solve();
     }
     return 0;
@@ -48,7 +62,4 @@ int main()
 /*
 freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
-*/
-/*
-    for(auto &x:v)cin>>x;
 */

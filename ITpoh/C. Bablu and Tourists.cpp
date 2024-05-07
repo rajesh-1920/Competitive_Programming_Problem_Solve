@@ -33,18 +33,17 @@ vector<ll> v;
 map<ll, vector<ll>> mp;
 bool pre(ll h)
 {
-    nl;
     ll i, j, t;
     for (i = 0; i < k - 1; i++)
     {
-        t = abs(h - v[i]);
+        t = abs(h + v[i]);
         for (auto it : mp[t])
-        {
-            // cout << it << ' ';
-            cout << h << ' ' << t << ' ' << i << ' ' << it << '\n';
             if (it > i && it < k)
                 return true;
-        }
+        t = abs(h - v[i]);
+        for (auto it : mp[t])
+            if (it > i && it < k)
+                return true;
     }
     return false;
 }
@@ -60,16 +59,15 @@ void solve(void)
         mp[h].push_back(i);
     }
     l = 0;
-    h = 100000000000;
-    while (h - l > 1)
+    while (true)
     {
-        m = (h + l) / 2;
-        if (pre(m))
-            l = m;
-        else
-            h = m;
+        if (pre(l))
+        {
+            cout << l;
+            break;
+        }
+        l++;
     }
-    cout << h << ' ' << l;
 }
 //------------------------------------------------------------------------------------
 int main()

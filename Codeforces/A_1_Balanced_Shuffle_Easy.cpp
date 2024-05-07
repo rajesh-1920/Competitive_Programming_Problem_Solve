@@ -1,19 +1,13 @@
 // Author:  Rajesh Biswas
-// Date  :  05.04.2024
+// Date  :  06.05.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
+typedef unsigned long long int ull;
 //----------------------------(definition section)-------------------------------------
-#define all(x) x.begin(), x.end()
-#define srt(X) sort(all(X))
-#define rev(X) reverse(all(X))
-#define rsrt(X) sort(X.rbegin(), X.rend())
-#define pi 3.141592653589793238462643383279502884197
-
-#define pa pair<ll, ll>
-#define vec vector<ll>
-#define vecp vector<pa>
+#define N 2000009
+#define MOD 1000000009
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
@@ -27,27 +21,39 @@ typedef long long int ll;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-void solve(void)
+int fl = 0;
+void res(string &s, int l, int r, ll c)
 {
-    ll n, i, j;
-    cin >> n;
-    i = n + 10;
-    i %= 30;
-    string s1 = "..............................\n";
-    string s2 = "..............................";
-    n = 9;
-    for (j = i; n; j++)
+    if (fl)
+        rrr;
+    if (l == c && r == c)
     {
-        j %= 30;
-        n--;
-        s2[j] = '-';
+        cout << s << '\n';
+        fl = 1;
+        rrr;
     }
-    s2[i] = 'T';
-    j %= 30;
-    s2[j] = 'H';
-    cout << s1 << s1;
-    cout << s2 << '\n';
-    cout << s1 << s1;
+    if (l < c)
+    {
+        s.push_back('(');
+        res(s, l + 1, r, c);
+        s.pop_back();
+    }
+    if (l > r && r < c)
+    {
+        s.push_back(')');
+        res(s, l, r + 1, c);
+        s.pop_back();
+    }
+}
+void solve()
+{
+    string s;
+    cin >> s;
+    int i, c = 0;
+    for (i = 0; i < s.size(); i++)
+        c += (s[i] == '(');
+    string t = "";
+    res(t, 0, 0, c);
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -56,10 +62,10 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    cin >> test;
+    // cin >> test;
     for (T = 1; T <= test; T++)
     {
-        cout << "Case #" << T << ":\n";
+        // cout << "Case " << T << ": ";
         solve();
     }
     return 0;
@@ -67,7 +73,4 @@ int main()
 /*
 freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
-*/
-/*
-    for(auto &x:v)cin>>x;
 */
