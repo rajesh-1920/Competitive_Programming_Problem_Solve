@@ -41,6 +41,9 @@ void solve()
     cout << (n * a + b * (cnt / 2 + 1));
     nl;
     /// t = unique(s.begin(), s.end())-s.begin();
+    // string t = "hi";
+    // s.erase(s.find(t), t.size());
+    // cout << s;
 }
 //------------------------------------------------------------------------------------
 int main()

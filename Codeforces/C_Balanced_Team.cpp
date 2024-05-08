@@ -23,6 +23,27 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    int n, x, i, mx = 0, cnt = 0, j;
+    cin >> n;
+    ll a[n];
+    for (i = 0; i < n; i++)
+        cin >> a[i];
+    sort(a, a + n);
+    i = j = 0;
+    while (i < n)
+    {
+        if (a[j] - a[i] <= 5)
+        {
+            mx = max(mx, (j - i + 1));
+            if (j < n - 1)
+                j++;
+            else
+                i++;
+        }
+        else
+            i++;
+    }
+    cout << mx;
 }
 //------------------------------------------------------------------------------------
 int main()
