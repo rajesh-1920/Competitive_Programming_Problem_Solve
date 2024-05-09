@@ -24,6 +24,58 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    int n;
+    string s;
+    cin >> n >> s;
+    int ca[n], cc[n], nb[n], fb[n], t = -1;
+    int cnt = 0, c = 0;
+    for (int i = 0; i < n; i++)
+    {
+        fb[i] = t;
+        if (s[i] == 'b')
+            t = i;
+        cnt += (s[i] == 'a');
+        ca[i] = cnt;
+    }
+    cnt = 0;
+    t = -1;
+    for (int i = n - 1; i >= 0; i--)
+    {
+        nb[i] = t;
+        if (s[i] == 'b')
+            t = i;
+        cnt += (s[i] == 'c');
+        cc[i] = cnt;
+    }
+    cnt = 0;
+    for (int i = 0; i < n; i++)
+    {
+        t = nb[i];
+        if (t == -1)
+            break;
+        if (s[i] == 'a')
+        {
+            if (cc[t] == 0)
+                break;
+            cnt++;
+        }
+    }
+    int mn=cnt;
+    cnt = 0;
+    for (int i = n - 1; i >= 0; i--)
+    {
+        t = fb[i];
+        if (t == -1)
+            break;
+        if (s[i] == 'c')
+        {
+            if (ca[t] == 0)
+                break;
+            cnt++;
+        }
+    }
+    cout << min(mn, cnt);
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -32,7 +84,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";

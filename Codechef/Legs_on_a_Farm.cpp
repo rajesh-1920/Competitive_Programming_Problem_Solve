@@ -24,6 +24,10 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    ll n;
+    cin>>n;
+    cout<<(n/4+(n%4!=0));
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -32,7 +36,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
