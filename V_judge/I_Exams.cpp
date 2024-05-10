@@ -12,7 +12,7 @@ typedef unsigned long long int ull;
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
-
+ 
 #define No cout << "No\n"
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
@@ -21,25 +21,24 @@ typedef unsigned long long int ull;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
+int n,k,ans;
+void res(int c2,int s,int cn)
+{
+    if(cn>n||s>k)
+    rrr;
+    if(n==cn&&s==k)
+    {ans=min(ans,c2);rrr;}
+    res(c2+1,s+2,cn+1);
+    res(c2,s+3,cn+1);
+    res(c2,s+4,cn+1);
+    res(c2,s+5,cn+1);
+}
 void solve(void)
 {
-    ull n;
-    cin >> n;
-    while (n++)
-    {
-        ull t = n-1, s = 0;
-        while (t > 0)
-        {
-            s += (t % 10);
-            t /= 10;
-        }
-        if (__gcd(s, n-1) > 1)
-        {
-            cout << n-1;
-            nl;
-            rrr;
-        }
-    }
+    cin>>n>>k;
+    ans=INT_MAX;
+    res(0,0,0);
+    cout<<ans;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -48,7 +47,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    cin >> test;
+    // cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";

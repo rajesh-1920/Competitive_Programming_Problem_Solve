@@ -12,7 +12,7 @@ typedef unsigned long long int ull;
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
-
+ 
 #define No cout << "No\n"
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
@@ -23,23 +23,16 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
-    ull n;
-    cin >> n;
-    while (n++)
-    {
-        ull t = n-1, s = 0;
-        while (t > 0)
-        {
-            s += (t % 10);
-            t /= 10;
-        }
-        if (__gcd(s, n-1) > 1)
-        {
-            cout << n-1;
-            nl;
-            rrr;
-        }
-    }
+    int n,s;
+    cin>>n>>s;
+    int a[n];
+    for(int i=0;i<n;i++)cin>>a[i];
+    sort(a,a+n);
+    int x1=a[n-1],x2=a[n-2];
+    int ans=2*(s/(x1+x2));
+    if(s%(x1+x2)>x1)ans+=2;
+    else if(s%(x1+x2))ans++;
+    cout<<ans<<'\n';
 }
 //------------------------------------------------------------------------------------
 int main()
