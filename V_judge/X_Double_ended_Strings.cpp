@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  10.05.2024
+// Date  :  12.05.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -12,7 +12,7 @@ typedef unsigned long long int ull;
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
- 
+
 #define No cout << "No\n"
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
@@ -23,9 +23,27 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
-    int a,b;
-    cin>>a>>b;
-    cout<<min(a,b);
+    string a, b;
+    cin >> a >> b;
+    int mx = 0;
+    for (int l = 0; l < a.size(); l++)
+        for (int t = 0; t < b.size(); t++)
+        {
+            int i = l, j = t, cnt = 0;
+            while (i < a.size() && j < b.size())
+            {
+                if (a[i] == b[j])
+                {
+                    cnt++;
+                    i++;
+                    j++;
+                }
+                else
+                    break;
+                mx = max(mx, cnt);
+            }
+        }
+    cout << (a.size() - mx + b.size() - mx);
     nl;
 }
 //------------------------------------------------------------------------------------

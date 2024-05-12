@@ -7,12 +7,12 @@ typedef long long int ll;
 typedef unsigned long long int ull;
 //----------------------------(definition section)-------------------------------------
 #define N 2000009
-#define MOD 1000000007
+#define MOD 1000000009
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
- 
+
 #define No cout << "No\n"
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
@@ -21,12 +21,33 @@ typedef unsigned long long int ull;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-void solve(void)
+void solve()
 {
-    int a,b;
-    cin>>a>>b;
-    cout<<min(a,b);
-    nl;
+    ll r, s = 5;
+    cin >> r;
+    ll n=r;
+    if (r > 3)
+    {
+        r -= 3;
+        ll ans = 0;
+        while (true)
+        {
+            if (r <= 0)
+                break;
+            ans += (s);
+            r--;
+            if (r <= 0)
+                break;
+            ans += (s);
+            s += 2;
+            r--;
+        }
+        if (n & 1)
+            cout << (ans * 4);
+        else
+            cout << (ans * 4) + 4;
+        nl;
+    }
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -46,7 +67,4 @@ int main()
 /*
 freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
-*/
-/*
-    for(auto &x:v)cin>>x;
 */

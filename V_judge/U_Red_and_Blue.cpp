@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  10.05.2024
+// Date  :  11.05.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -23,9 +23,21 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
-    int a,b;
-    cin>>a>>b;
-    cout<<min(a,b);
+    int n,x,m;
+    cin>>n;
+    vector<int>a;
+    for(int i=0;i<n;i++)cin>>x,a.push_back(x);
+    cin>>m;
+    for(int i=0;i<m;i++)cin>>x,a.push_back(x);
+    sort(a.rbegin(),a.rend());
+    int s=0;
+    for(int i=0;i<n+m;i++)
+    {
+        if(a[i]<=0)
+        break;
+        s+=a[i];
+    }
+    cout<<s;
     nl;
 }
 //------------------------------------------------------------------------------------

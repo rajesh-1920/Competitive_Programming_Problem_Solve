@@ -1,5 +1,5 @@
 // Author:  Rajesh Biswas
-// Date  :  10.05.2024
+// Date  :  12.05.2024
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -21,24 +21,22 @@ typedef unsigned long long int ull;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
-int n,k,ans;
-void res(int c2,int s,int cn)
-{
-    if(cn>n||s>k)
-    rrr;
-    if(n==cn&&s==k)
-    {ans=min(ans,c2);rrr;}
-    res(c2+1,s+2,cn+1);
-    res(c2,s+3,cn+1);
-    res(c2,s+4,cn+1);
-    res(c2,s+5,cn+1);
-}
 void solve(void)
 {
-    cin>>n>>k;
-    ans=INT_MAX;
-    res(0,0,0);
-    cout<<ans;
+    int k,t,cnt=0;
+    cin>>t>>k;
+    while (t--)
+    {
+        if(5*t+5<=k)k-=5;
+        else if(4*t+4<=k)k-=4;
+        else if(3*t+3<=k)k-=3;
+        else
+        {
+            cnt++;
+            k-=2;
+        }
+    }
+    cout<<cnt;
 }
 //------------------------------------------------------------------------------------
 int main()
