@@ -23,12 +23,13 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
-    int a,b;
-    cin>>a>>b;
-    if(a==1&&b==1)cout<<0;
-    //if(a==1||b==1)cout<<1;
-    else cout<<min(a,b);
-    nl;
+    int n,p;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {cin>>a[i];if(a[i]==n)p=i;}
+    if(p!=0||p!=n-1){mm;rrr;}
+
 }
 //------------------------------------------------------------------------------------
 int main()
