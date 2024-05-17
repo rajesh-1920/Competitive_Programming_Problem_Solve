@@ -6,13 +6,13 @@ using namespace std;
 typedef long long int ll;
 typedef unsigned long long int ull;
 //----------------------------(definition section)-------------------------------------
-#define N 2000009
+#define N 200009
 #define MOD 1000000007
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
- 
+
 #define No cout << "No\n"
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
@@ -21,8 +21,40 @@ typedef unsigned long long int ull;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
+int n;
+vector<int> gr[N];
+vector<int> vis(N, 0);
+void dfs(int x)
+{
+    vis[x] = 1;
+    for (auto ii : gr[x])
+        if (!vis[ii])
+            dfs(ii);
+}
 void solve(void)
 {
+    int m;
+    cin >> n >> m;
+    while (m--)
+    {
+        int x, y;
+        cin >> x >> y;
+        gr[x].push_back(y);
+        gr[y].push_back(x);
+    }
+    dfs(1);
+    vector<pair<int, int>> res;
+    for (int i = 2; i <= n; i++)
+    {
+        if (!vis[i])
+        {
+            res.push_back({1, i});
+            dfs(i);
+        }
+    }
+    cout << res.size() << '\n';
+    for (auto ii : res)
+        cout << ii.fi << ' ' << ii.sc << '\n';
 }
 //------------------------------------------------------------------------------------
 int main()
