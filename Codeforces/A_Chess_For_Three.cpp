@@ -23,6 +23,38 @@ typedef unsigned long long int ull;
 //------------------------------------------------------------------------------------
 void solve()
 {
+    int p1, p2, p3, fl = 0;
+    cin >> p1 >> p2 >> p3;
+    int cn = 0;
+    if ((p1 == 0 && p2 == 0 && p3 % 2 == 0) || (p3 == 0 && p2 == 0 && p1 % 2 == 0) || (p1 == 0 && p3 == 0 && p2 % 2 == 0))
+    {
+        cout << cn;
+        nl;
+        rrr;
+    }
+    for (int i = 0; i <= 50; i++)
+    {
+        for (int j = 0; j <= 50; j++)
+        {
+            for (int k = 0; k <= 50; k++)
+            {
+                int t1 = p1 - i - j;
+                int t2 = p2 - i - k;
+                int t3 = p3 - k - j;
+                if (t1 >= 0 && t2 >= 0 && t3 >= 0 && t1 % 2 == 0 && t2 % 2 == 0 && t3 % 2 == 0)
+                {
+                    cn = max(cn, i + j + k);
+                    if (i || j || k)
+                        fl = 1;
+                }
+            }
+        }
+    }
+    if (fl)
+        cout << cn;
+    else
+        cout << -1;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
@@ -31,7 +63,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
