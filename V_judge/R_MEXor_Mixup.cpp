@@ -6,13 +6,13 @@ using namespace std;
 typedef long long int ll;
 typedef unsigned long long int ull;
 //----------------------------(definition section)-------------------------------------
-#define N 2000009
+#define N 400009
 #define MOD 1000000007
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
- 
+
 #define No cout << "No\n"
 #define Yes cout << "Yes\n"
 #define YES cout << "YES\n"
@@ -21,17 +21,27 @@ typedef unsigned long long int ull;
 #define nl cout << "\n"
 #define rrr return
 //------------------------------------------------------------------------------------
+map<int, int> mp;
 void solve(void)
 {
+    int a, b;
+    cin >> a >> b;
+    
 }
 //------------------------------------------------------------------------------------
 int main()
 {
+    int res = 0;
+    for (int i = 0; i <= N; i++)
+    {
+        res ^= i;
+        mp[i] = res;
+    }
     // cout << fixed << showpoint << setprecision(0);
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    // cin >> test;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
