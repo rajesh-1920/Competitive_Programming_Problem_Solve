@@ -6,7 +6,6 @@ using namespace std;
 typedef long long int ll;
 typedef unsigned long long int ull;
 //----------------------------(definition section)-------------------------------------
-#define N 400009
 #define MOD 1000000007
 #define fi first
 #define sc second
@@ -20,13 +19,47 @@ typedef unsigned long long int ull;
 #define mm cout << "-1\n"
 #define nl cout << "\n"
 #define rrr return
+#define N 300009
 //------------------------------------------------------------------------------------
 map<int, int> mp;
+string bin(int a)
+{
+    string s = "";
+    while (a > 0)
+    {
+        if (a & 1)
+            s.pb('1');
+        else
+            s.pb('0');
+        a >>= 1;
+    }
+    return s;
+}
 void solve(void)
 {
     int a, b;
     cin >> a >> b;
-    
+    string sa = bin(mp[a - 1]);
+    string sb = bin(b);
+    while (sa.size() > sb.size())
+        sb.pb('0');
+    while (sa.size() < sb.size())
+        sa.pb('0');
+    reverse(sa.begin(), sa.end());
+    reverse(sb.begin(), sb.end());
+    int t = 0;
+    for (int i = 0; i < sa.size(); i++)
+    {
+        if (sb[i] != sa[i])
+            t |= 1 << i;
+    }
+    if (t == 0)
+        cout << a;
+    else if (t == a)
+        cout << a + 2;
+    else
+        cout << a + 1;
+    nl;
 }
 //------------------------------------------------------------------------------------
 int main()
