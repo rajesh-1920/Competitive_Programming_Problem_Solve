@@ -20,19 +20,27 @@ typedef long long int ll;
 //------------------------------------------------------------------------------------
 void solve(void)
 {
-    ll n, m, k;
-    cin >> n >> m >> k;
-    if (k < n && k < m)
-        No;
-    else
+    int n, mn = 200, mx = 0, mxp, mnp;
+    cin >> n;
+    for (int i = 1; i <= n; i++)
     {
-        ll t = k % n;
-        t += k % m;
-        if (t % m == 0 || t % n == 0)
-            Yes;
-        else
-            No;
+        int x;
+        cin >> x;
+        if (mx < x)
+        {
+            mx = x;
+            mxp = i;
+        }
+        if (mn >= x)
+        {
+            mn = x;
+            mnp = i;
+        }
     }
+    int ans = (mxp - 1) + (n - mnp);
+    if (mnp < mxp)
+        ans--;
+    cout << ans;
 }
 //------------------------------------------------------------------------------------
 int main()

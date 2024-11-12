@@ -1,76 +1,100 @@
 // Author:  Rajesh Biswas
-// Date  :  22.03.2024
+// CF    :  rajesh19
+// Date  :  28.10.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
-//----------------------------(definition section)-------------------------------------
-#define N (1LL * 1e18)
-#define sn 3000000 + 100
+//------------------------------------------------------------------------------------------
+/*/----------------------------(Order_set)--------------------------------------------------
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+template <class T>
+using o_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+o_set<ll> s;
+//---------------------------------------------------------------------------------------*/
+/*/-------------------------Modular-Arithmatic----------------------------------------------
+inline ll _normal(ll A, ll M)
+{
+    A = A - (A / M) * M;
+    if (A < 0)
+        A += M;
+    return A;
+}
+inline ll modadd(ll A, ll B, ll M)
+{
+    A = _normal(A, M), B = _normal(B, M);
+    return _normal(A + B, M);
+}
+inline ll modsub(ll A, ll B, ll M)
+{
+    A = _normal(A, M), B = _normal(B, M);
+    return _normal(A - B, M);
+}
+inline ll modmul(ll A, ll B, ll M)
+{
+    A = _normal(A, M), B = _normal(B, M);
+    return _normal(A * B, M);
+}
+inline ll binexpo(ll A, ll B, ll M)
+{
+    ll ans = _normal(1, M);
+    while (B)
+    {
+        if (B & 1)
+            ans = modmul(ans, A, M);
+        A = modmul(A, A, M);
+        B >>= 1;
+    }
+    return _normal(ans, M);
+}
+inline ll moddiv(ll A, ll B, ll M)
+{
+    A = _normal(A, M), B = _normal(B, M);
+    return _normal(modmul(A, (binexpo(B, M - 2, M)), M), M);
+}
+//-----------------------------------------------------------------------------------------*/
+//----------------------------(definition section)-------------------------------------------
+#define f(i, a, b) for (ll i = a; i < b; i++)
+#define scv(v, n) f(i, 0, n) cin >> (v[i]);
+#define dbg(x) cout << #x << " = " << x << '\n'
+#define nl cout << ("\n")
+#define rrr return
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
 
-#define No cout << "No\n" a
-#define Yes cout << "Yes\n"
-#define YES cout << "YES\n"
-#define NO cout << "NO\n"
-#define mm cout << "-1\n"
-#define nl cout << "\n"
-#define rrr return
-//------------------------------------------------------------------------------------
-vector<ll> a;
-ll maxSubArraySum(ll size)
-{
-    ll max_so_far = INT_MIN, max_ending_here = 0;
+#define all(s) s.begin(), s.end()
+#define rall(s) s.rbegin(), s.rend()
 
-    for (ll i = 0; i < size; i++)
-    {
-        max_ending_here = max_ending_here + a[i];
-        if (max_ending_here < 0)
-            max_ending_here = 0;
-        if (max_so_far < max_ending_here)
-            max_so_far = max_ending_here;
-    }
-    return max_so_far;
-}
-void solve()
+#define PI acos(-1)
+#define base1 1000002089
+#define base2 1000003853
+#define hashmod 1000002989
+
+#define eps 0.0000000001
+#define inf 90000000000000
+#define MOD 1000000007
+#define N 200009
+//------------------------------------------------------------------------------------------
+void solve(void)
 {
-    ll n, k, j, i, t = 0, MOD = 1000000007;
-    cin >> n >> k;
-    a.clear();
-    for (i = 0; i < n; i++)
-    {
-        cin >> j;
-        a.push_back(j);
-        t += j;
-    }
-    ll mx = maxSubArraySum(n);
-    k--;
-    ll m = mx % MOD;
-    while (k--)
-    {
-        mx = (mx % MOD + mx % MOD) % MOD;
-        m = (m % MOD + mx % MOD) % MOD;
-    }
-    mx = m % MOD;
-    if (mx < 0)
-        mx = 0;
-    if (t < 0 && ((t % MOD + mx % MOD) % MOD))
-        cout << ((t % MOD + MOD+ mx % MOD) % MOD);
-    else
-        cout << ((t % MOD + mx % MOD) % MOD);
-    nl;
+    ll n;
+    cin >> n;
+    vector<ll> v(n);
+    for (auto &it : v)
+        cin >> it;
 }
-//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------
 int main()
 {
-    // cout << fixed << showpoint << setprecision(0);
+    // cout << fixed << showpoint << setprecision(10);
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    cin >> test;
+    // cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
@@ -81,7 +105,4 @@ int main()
 /*
 freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
-*/
-/*
-    for(auto &x:v)cin>>x;
 */

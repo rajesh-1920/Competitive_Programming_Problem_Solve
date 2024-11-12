@@ -1,43 +1,123 @@
 // Author:  Rajesh Biswas
-// Date  :  26.02.2024
+// CF    :  rajesh19
+// Date  :  28.10.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
-//----------------------------(definition section)-------------------------------------
+//------------------------------------------------------------------------------------------
+/*/----------------------------(Order_set)--------------------------------------------------
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+template <class T>
+using o_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+o_set<ll> s;
+//---------------------------------------------------------------------------------------*/
+/*/-------------------------Modular-Arithmatic----------------------------------------------
+inline ll _normal(ll A, ll M)
+{
+    A = A - (A / M) * M;
+    if (A < 0)
+        A += M;
+    return A;
+}
+inline ll modadd(ll A, ll B, ll M)
+{
+    A = _normal(A, M), B = _normal(B, M);
+    return _normal(A + B, M);
+}
+inline ll modsub(ll A, ll B, ll M)
+{
+    A = _normal(A, M), B = _normal(B, M);
+    return _normal(A - B, M);
+}
+inline ll modmul(ll A, ll B, ll M)
+{
+    A = _normal(A, M), B = _normal(B, M);
+    return _normal(A * B, M);
+}
+inline ll binexpo(ll A, ll B, ll M)
+{
+    ll ans = _normal(1, M);
+    while (B)
+    {
+        if (B & 1)
+            ans = modmul(ans, A, M);
+        A = modmul(A, A, M);
+        B >>= 1;
+    }
+    return _normal(ans, M);
+}
+inline ll moddiv(ll A, ll B, ll M)
+{
+    A = _normal(A, M), B = _normal(B, M);
+    return _normal(modmul(A, (binexpo(B, M - 2, M)), M), M);
+}
+//-----------------------------------------------------------------------------------------*/
+//----------------------------(definition section)-------------------------------------------
+#define f(i, a, b) for (ll i = a; i < b; i++)
+#define scv(v, n) f(i, 0, n) cin >> (v[i]);
+#define dbg(x) cout << #x << " = " << x << '\n'
+#define nl cout << ("\n")
+#define rrr return
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
 
-#define No cout << "No\n"
-#define Yes cout << "Yes\n"
-#define YES cout << "YES\n"
-#define NO cout << "NO\n"
-#define mm cout << "-1\n"
-#define nl cout << "\n"
-#define rrr return
-//------------------------------------------------------------------------------------
+#define all(s) s.begin(), s.end()
+#define rall(s) s.rbegin(), s.rend()
+
+#define PI acos(-1)
+#define base1 1000002089
+#define base2 1000003853
+#define hashmod 1000002989
+
+#define eps 0.0000000001
+#define inf 90000000000000
+#define MOD 1000000007
+#define N 200009
+//------------------------------------------------------------------------------------------
 void solve(void)
 {
-    ll x, y, t;
-    cin >> x >> y;
-    t = x / y;
-    if (x % y)
-        t++;
-    if (t <= 10)
-        NO;
+    ll n;
+    cin >> n;
+    multiset<ll> toy;
+    f(i, 0, n)
+    {
+        ll x;
+        cin >> x;
+        toy.insert(x);
+    }
+    f(i, 1, n)
+    {
+        ll x;
+        cin >> x;
+        auto it = toy.lower_bound(x);
+        if (*it == x)
+        {
+            toy.erase(it);
+            continue;
+        }
+        if (it == toy.begin())
+            continue;
+        it--;
+        toy.erase(it);
+    }
+    if (toy.size() > 1)
+        cout << -1;
     else
-        YES;
+        cout << (*toy.begin());
 }
-//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------
 int main()
 {
-    // cout << fixed << showpoint << setprecision(0);
+    // cout << fixed << showpoint << setprecision(10);
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     int test = 1, T;
-    cin >> test;
+    // cin >> test;
     for (T = 1; T <= test; T++)
     {
         // cout << "Case " << T << ": ";
@@ -48,7 +128,4 @@ int main()
 /*
 freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
-*/
-/*
-    for(auto &x:v)cin>>x;
 */

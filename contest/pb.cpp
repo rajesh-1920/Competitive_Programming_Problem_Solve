@@ -1,77 +1,119 @@
 // Author:  Rajesh Biswas
-// Date  :  23-02-2024
+// CF    :  rajesh19
+// Date  :  28.10.2024
 
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
-//----------------------------(definition section)-------------------------------------
-#define rsrt(X) sort(X.rbegin(), X.rend())
-#define srt(X) sort(X.begin(), X.end())
-#define pi 3.141592653589793238462643383279502884197
-#define lower(s) transform(s.begin(), s.end(), s.begin(), ::tolower);
-#define upper(s) transform(s.begin(), s.end(), s.begin(), ::toupper);
-
-#define pa pair<ll, ll>
-#define vec vector<ll>
-#define vecp vector<pa>
+//------------------------------------------------------------------------------------------
+/*/----------------------------(Order_set)--------------------------------------------------
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+template <class T>
+using o_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+o_set<ll> s;
+//---------------------------------------------------------------------------------------*/
+/*/-------------------------Modular-Arithmatic----------------------------------------------
+inline ll _normal(ll A, ll M)
+{
+    A = A - (A / M) * M;
+    if (A < 0)
+        A += M;
+    return A;
+}
+inline ll modadd(ll A, ll B, ll M)
+{
+    A = _normal(A, M), B = _normal(B, M);
+    return _normal(A + B, M);
+}
+inline ll modsub(ll A, ll B, ll M)
+{
+    A = _normal(A, M), B = _normal(B, M);
+    return _normal(A - B, M);
+}
+inline ll modmul(ll A, ll B, ll M)
+{
+    A = _normal(A, M), B = _normal(B, M);
+    return _normal(A * B, M);
+}
+inline ll binexpo(ll A, ll B, ll M)
+{
+    ll ans = _normal(1, M);
+    while (B)
+    {
+        if (B & 1)
+            ans = modmul(ans, A, M);
+        A = modmul(A, A, M);
+        B >>= 1;
+    }
+    return _normal(ans, M);
+}
+inline ll moddiv(ll A, ll B, ll M)
+{
+    A = _normal(A, M), B = _normal(B, M);
+    return _normal(modmul(A, (binexpo(B, M - 2, M)), M), M);
+}
+//-----------------------------------------------------------------------------------------*/
+//----------------------------(definition section)-------------------------------------------
+#define f(i, a, b) for (ll i = a; i < b; i++)
+#define scv(v, n) f(i, 0, n) cin >> (v[i]);
+#define dbg(x) cout << #x << " = " << x << '\n'
+#define nl cout << ("\n")
+#define rrr return
 #define fi first
 #define sc second
 #define pb(x) push_back(x)
 #define ppb(x, y) push_back({x, y})
 
-#define No cout << "No\n"
-#define Yes cout << "Yes\n"
-#define YES cout << "YES\n"
-#define NO cout << "NO\n"
-#define nl cout << "\n"
-#define rrr return
-//------------------------------------------------------------------------------------
+#define all(s) s.begin(), s.end()
+#define rall(s) s.rbegin(), s.rend()
+
+#define PI acos(-1)
+#define base1 1000002089
+#define base2 1000003853
+#define hashmod 1000002989
+
+#define eps 0.0000000001
+#define inf 90000000000000
+#define MOD 1000000007
+#define N 200009
+//------------------------------------------------------------------------------------------
 void solve(void)
 {
-    ll n, i, x, N = 1LL * 1e18;
-    cin >> n;
-    vec a, b, c;
-    vec t;
-    set<ll> tt;
-    for (i = 1; i <= n; i++)
-        tt.insert(i);
-    for (i = 0; i < n / 2; i++)
+    ll n, t;
+    cin >> n >> t;
+    if (n == 1)
     {
-        cin >> x;
-        c.pb(x);
+        if (t == 1)
+            cout << "Evenius\n";
+        else
+            cout << "Oddius\n";
+        rrr;
     }
-    for (i = 0; i < n / 2; i++)
+    if (n & 1)
     {
-        {
-            auto it = next(tt.begin(), c[i] - 1);
-            a.pb(*it);
-            
-        }
-        cin >> x;
-        {
-            auto it = next(tt.begin(), x - 1);
-            b.pb(*it);
-            tt.erase(it);
-        }
+        cout << "Oddius\n";
     }
-    for (auto it : a)
-        cout << it << ' ';
-    nl;
-    for (auto it : b)
-        cout << it << ' ';
-    nl;
+    else
+    {
+        if (t == 1)
+            cout << "Evenius\n";
+        else
+            cout << "Oddius\n";
+    }
 }
-//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------
 int main()
 {
+    // cout << fixed << showpoint << setprecision(10);
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    ll test = 1, T;
-    cout << fixed << noshowpoint << setprecision(0);
-    // cin >> test;
+    int test = 1, T;
+    cin >> test;
     for (T = 1; T <= test; T++)
     {
-        // cout << "Case " << T << ": ";
+        cout << "Case " << T << ": ";
         solve();
     }
     return 0;
