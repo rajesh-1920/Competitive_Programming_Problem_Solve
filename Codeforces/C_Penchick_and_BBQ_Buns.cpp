@@ -88,58 +88,7 @@ void solve(void)
     if (n & 1)
     {
         vector<ll> an(n + 1);
-        for (ll i = n; i >= 1; i--)
-        {
-            for (auto it : sq)
-            {
-                if (it > i)
-                    break;
-                ll x = i - it;
-                if ((i - (x + x * x)) > 0 && x > 1 && sq.find((i - (x + x * x))) != sq.end())
-                {
-                    // cout << x << ' ' << x + x * x << ' ' << i << '\n';
-                    an[x] = an[i] = an[x + x * x] = 1;
-                    ll t = 2;
-                    for (ll j = x + 2; j < x + x * x;)
-                    {
-                        an[j] = t;
-                        j++;
-                        an[j] = t;
-                        j++;
-                        t++;
-                    }
-                    an[x + 1] = an[1] = t++;
-                    for (ll j = 2; j < x;)
-                    {
-                        an[j] = t;
-                        j++;
-                        an[j] = t;
-                        j++;
-                        t++;
-                    }
-                    for (ll j = x + x * x + 1; j < i;)
-                    {
-                        an[j] = t;
-                        j++;
-                        an[j] = t;
-                        j++;
-                        t++;
-                    }
-                    for (ll j = i + 1; j <= n;)
-                    {
-                        an[j] = t;
-                        j++;
-                        an[j] = t;
-                        j++;
-                        t++;
-                    }
-                    for (ll j = 1; j <= n; j++)
-                        cout << an[j] << ' ';
-                    cout << '\n';
-                    return;
-                }
-            }
-        }
+        
         cout << -1 << '\n';
     }
     else
