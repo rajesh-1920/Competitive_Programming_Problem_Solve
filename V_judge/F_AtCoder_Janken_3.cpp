@@ -81,7 +81,7 @@ inline ll moddiv(ll A, ll B, ll M)
 //------------------------------------------------------------------------------------------
 ll n;
 string s;
-ll dp[N][5];
+vector<vector<ll>> dp(N, vector<ll>(5, -1));
 ll ok(ll i, ll las)
 {
     if (i == n)
@@ -89,27 +89,37 @@ ll ok(ll i, ll las)
     if (dp[i][las] != -1)
         return dp[i][las];
     ll ans = 0;
-    if (las == 1)
+    if (s[i] == 'R')
     {
-        ans = max(ans, ok(i + 1, 2) + (s[i] == 'P'));
-        ans = max(ans, ok(i + 1, 3) + (s[i] == 'P'));
+        if (las != 1)
+            ans = max(ans, ok(i + 1, 1) + (las == 2));
+        // if (las != 2)
+        //     ans = max(ans, ok(i + 1, 2) + (las == 2));
+        if (las != 3)
+            ans = max(ans, ok(i + 1, 3) + (las == 2));
     }
-    if (las == 2)
+    if (s[i] == 'S')
     {
-        ans = max(ans, ok(i + 1, 1) + (s[i] == 'R'));
-        ans = max(ans, ok(i + 1, 3) + (s[i] == 'R'));
+        // if (las != 1)
+        //     ans = max(ans, ok(i + 1, 1) + (las == 3));
+        if (las != 2)
+            ans = max(ans, ok(i + 1, 2) + (las == 3));
+        if (las != 3)
+            ans = max(ans, ok(i + 1, 3) + (las == 3));
     }
-    if (las == 3)
+    if (s[i] == 'P')
     {
-        ans = max(ans, ok(i + 1, 1) + (s[i] == 'S'));
-        ans = max(ans, ok(i + 1, 2) + (s[i] == 'S'));
+        if (las != 1)
+            ans = max(ans, ok(i + 1, 1) + (las == 1));
+        if (las != 2)
+            ans = max(ans, ok(i + 1, 2) + (las == 1));
+        // if (las != 3)
+        //     ans = max(ans, ok(i + 1, 3) + (las == 1));
     }
     return dp[i][las] = ans;
 }
 void solve(void)
 {
-    for (ll i = 0; i < N; i++)
-        dp[i][0] = dp[i][1] = dp[i][2] = dp[i][3] = dp[i][4] = -1;
     cin >> n >> s;
     ll a1 = ok(0, 1);
     ll a2 = ok(0, 2);
