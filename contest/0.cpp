@@ -30,7 +30,9 @@ typedef long long int ll;
 using namespace __gnu_pbds;
 template <class T>
 using o_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
-o_set<ll> s;
+o_set<ll> st;
+ll pos = st.order_of_key(5);
+ll val = *st.find_by_order(2);
 //---------------------------------------------------------------------------------------*/
 /*/------------------------(Modular-Arithmatic)---------------------------------------------
 inline ll _normal(ll A, ll M)
@@ -194,6 +196,34 @@ ll value(ll nd, ll l, ll r, ll &myl, ll &myr)
     return value(nd * 2, l, mid, myl, myr) + value(nd * 2 + 1, mid + 1, r, myl, myr);
 }
 //----------------------------------------------------------------------------------------*/
+//------------------------------(use of sieve)----------------------------------------------
+vector<ll> lp(N, 0), prime(N, 1), sum(N, 0), pod(N, 1), cnt(N, 0);
+void sieve()
+{
+    for (ll i = 2; i < N; i++)
+    {
+        for (ll j = i; j < N; j += i)
+        {
+            cnt[j]++;
+            pod[j] *= i;
+            sum[j] += i;
+        }
+        if (prime[i])
+        {
+            lp[i] = i;
+            for (ll j = i + i; j < N; j += i)
+            {
+                cnt[j]++;
+                pod[j] *= i;
+                sum[j] += i;
+                prime[j] = 0;
+                if (!lp[j])
+                    lp[j] = i;
+            }
+        }
+    }
+}
+//----------------------------------------------------------------------------------------*/
 void solve(void)
 {
     ll n;
@@ -201,6 +231,11 @@ void solve(void)
     vector<ll> v(n);
     for (auto &it : v)
         cin >> it;
+    string st;
+    getline(cin, st);
+    ll i, j, a, b, c, d, sum[5][5], arr[5][5];
+    sum[i][j] = arr[i][j] + sum[i - 1][j] + sum[i][j - 1] - sum[i - 1][j - 1];
+    ll ans = sum[c][d] - sum[c][b - 1] - sum[a - 1][d] + sum[a - 1][b - 1];
 }
 //------------------------------------------------------------------------------------------
 int main()
