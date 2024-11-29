@@ -196,7 +196,7 @@ ll value(ll nd, ll l, ll r, ll &myl, ll &myr)
     return value(nd * 2, l, mid, myl, myr) + value(nd * 2 + 1, mid + 1, r, myl, myr);
 }
 //----------------------------------------------------------------------------------------*/
-//------------------------------(use of sieve)----------------------------------------------
+/*/-----------------------------(use of sieve)----------------------------------------------
 vector<ll> lp(N, 0), prime(N, 1), sum(N, 0), pod(N, 1), cnt(N, 0);
 void sieve()
 {
@@ -224,18 +224,46 @@ void sieve()
     }
 }
 //----------------------------------------------------------------------------------------*/
+/*/------------------------(Dynamic programming)---------------------------------------------
+ll dp[N];
+ll ok(ll rem_sum, vector<ll> &coin)//coin sum
+{
+    if (rem_sum == 0)
+        return 0;
+    if (dp[rem_sum] != -1)
+        return dp[rem_sum];
+
+    ll ans = LONG_LONG_MAX / 2;
+    for (auto it : coin)
+    {
+        if (rem_sum >= it)
+            ans = min(ans, (1LL + ok(rem_sum - it, coin)));
+    }
+    rrr dp[rem_sum] = ans;
+}
+//----------------------------------------------------------------------------------------*/
+//----------------------------------------------------------------------------------------*/
 void solve(void)
 {
-    ll n;
-    cin >> n;
-    vector<ll> v(n);
-    for (auto &it : v)
-        cin >> it;
-    string st;
-    getline(cin, st);
-    ll i, j, a, b, c, d, sum[5][5], arr[5][5];
-    sum[i][j] = arr[i][j] + sum[i - 1][j] + sum[i][j - 1] - sum[i - 1][j - 1];
-    ll ans = sum[c][d] - sum[c][b - 1] - sum[a - 1][d] + sum[a - 1][b - 1];
+    // ll n;
+    // cin >> n;
+    // vector<ll> v(n);
+    // for (auto &it : v)
+    //     cin >> it;
+    // string st;
+    // getline(cin, st);
+    // ll i, j, a, b, c, d, sum[5][5], arr[5][5];
+    // sum[i][j] = arr[i][j] + sum[i - 1][j] + sum[i][j - 1] - sum[i - 1][j - 1];
+    // ll ans = sum[c][d] - sum[c][b - 1] - sum[a - 1][d] + sum[a - 1][b - 1];
+    ll arr[] = {5, 1, 5, 6, 3, 9};
+    vector<ll> v(20, 100), par(20, -1);
+    for (ll i = 0; i < 6; i++)
+    {
+        auto it = lower_bound(all(v), arr[i]);
+        *it = arr[i];
+    }
+    for (auto it : v)
+        cout << it << ' ';
 }
 //------------------------------------------------------------------------------------------
 int main()
