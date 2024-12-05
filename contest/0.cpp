@@ -24,7 +24,7 @@ typedef long long int ll;
 #define MOD 1000000007
 #define N 200009
 //------------------------------------------------------------------------------------------
-//----------------------------(Order_set)--------------------------------------------------
+/*/----------------------------(Order_set)--------------------------------------------------
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 using namespace __gnu_pbds;
@@ -34,29 +34,7 @@ o_set<ll> st;
 ll pos = st.order_of_key(5);
 ll val = *st.find_by_order(2);
 //---------------------------------------------------------------------------------------*/
-//------------------------(Modular-Arithmatic)---------------------------------------------
-inline ll _normal(ll A, ll M)
-{
-    A = A - (A / M) * M;
-    if (A < 0)
-        A += M;
-    return A;
-}
-inline ll modadd(ll A, ll B, ll M)
-{
-    A = _normal(A, M), B = _normal(B, M);
-    return _normal(A + B, M);
-}
-inline ll modsub(ll A, ll B, ll M)
-{
-    A = _normal(A, M), B = _normal(B, M);
-    return _normal(A - B, M);
-}
-inline ll modmul(ll A, ll B, ll M)
-{
-    A = _normal(A, M), B = _normal(B, M);
-    return _normal(A * B, M);
-}
+/*/------------------------(Modular-Arithmatic)---------------------------------------------
 inline ll binexpo(ll A, ll B, ll M)
 {
     ll ans = _normal(1, M);
@@ -95,7 +73,7 @@ else
         pod = modmul(pod, (binexpo(prime[i], _normal(powe[i] / 2 * outer, (MOD - 1)), MOD)), MOD);
 }
 //-----------------------------------------------------------------------------------------*/
-//--------------------------(Trie Data structure)------------------------------------------
+/*/--------------------------(Trie Data structure)------------------------------------------
 struct node
 {
     ll cnt, nxt[26];
@@ -132,7 +110,7 @@ inline ll qry(string &s)
     return Trie[root].cnt;
 }
 //-----------------------------------------------------------------------------------------*/
-//-------------------------(Segment tree with lazy)----------------------------------------
+/*/-------------------------(Segment tree with lazy)----------------------------------------
 ll a[N], tree[4 * N], lazy[4 * N];
 void init(ll nd, ll l, ll r)
 {
@@ -196,7 +174,7 @@ ll value(ll nd, ll l, ll r, ll &myl, ll &myr)
     return value(nd * 2, l, mid, myl, myr) + value(nd * 2 + 1, mid + 1, r, myl, myr);
 }
 //----------------------------------------------------------------------------------------*/
-//-----------------------------(use of sieve)----------------------------------------------
+/*/-----------------------------(use of sieve)----------------------------------------------
 vector<ll> lp(N, 0), prime(N, 1), sum(N, 0), pod(N, 1), cnt(N, 0), phi(N);
 void sieve()
 {
@@ -258,7 +236,7 @@ void sieve()
     }
 }
 //----------------------------------------------------------------------------------------*/
-//------------------------(Dynamic programming)---------------------------------------------
+/*/------------------------(Dynamic programming)---------------------------------------------
 ll dp[N];
 ll ok(ll rem_sum, vector<ll> &coin) // coin sum
 {
@@ -278,7 +256,7 @@ ll ok(ll rem_sum, vector<ll> &coin) // coin sum
 **grid e akti rekhar upor koiti bindu ace jegulo purno sonkha
      ans = gcd((x1 - x2), (y1 - y2)) + 1; // bindu 2 tar katalan distance
 //----------------------------------------------------------------------------------------*/
-//-----------------------------(Graph theory)------------------------------------------------
+/*/-----------------------------(Graph theory)------------------------------------------------
 vector<ll> g[N], topo;
 ll vis[N], cycle;
 void dfs(ll n) // topological sort
@@ -344,26 +322,51 @@ void _union(ll a, ll b, ll w)
     }
 }
 //----------------------------------------------------------------------------------------*/
+//-----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------*/
+
 void solve(void)
 {
-    // ll n;
-    // cin >> n;
-    // vector<ll> v(n);
-    // for (auto &it : v)
-    //     cin >> it;
-    // string st;
-    // getline(cin, st);
-    // ll i, j, a, b, c, d, sum[5][5], arr[5][5];
-    // sum[i][j] = arr[i][j] + sum[i - 1][j] + sum[i][j - 1] - sum[i - 1][j - 1];
-    // ll ans = sum[c][d] - sum[c][b - 1] - sum[a - 1][d] + sum[a - 1][b - 1];
-    ll arr[] = {5, 1, 5, 6, 3, 9};
-    vector<ll> v(20, 100), par(20, -1);
-    for (ll i = 0; i < 6; i++)
+    ll n;
+    cin >> n;
+    vector<ll> arr(n);
+    for (auto &it : arr)
+        cin >> it;
+    vector<int> tail(n + 5, 0);
+    vector<int> prev(n + 5, -1);
+    int len = 1;
+    for (int i = 1; i < n; i++)
     {
-        auto it = lower_bound(all(v), arr[i]);
-        *it = arr[i];
+        if (arr[i] < arr[tail[0]])
+            tail[0] = i;
+        else if (arr[i] > arr[tail[len - 1]])
+        {
+            prev[i] = tail[len - 1];
+            tail[len++] = i;
+        }
+        else
+        {
+            ll pos, l = -1, r = len - 1, key = arr[i];
+            while (r - l > 1)
+            {
+                int m = l + (r - l) / 2;
+                if (arr[tail[m]] >= key)
+                    r = m;
+                else
+                    l = m;
+            }
+            pos = r;
+            prev[i] = tail[pos - 1];
+            tail[pos] = i;
+        }
     }
-    for (auto it : v)
+    cout << len << '\n';
+    vector<ll> ans;
+    for (int i = tail[len - 1]; i >= 0; i = prev[i])
+        ans.emplace_back(arr[i]);
+    reverse(all(ans));
+    for (auto it : ans)
         cout << it << ' ';
 }
 //------------------------------------------------------------------------------------------
